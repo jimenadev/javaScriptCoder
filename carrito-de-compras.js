@@ -1,4 +1,4 @@
-const nombres = [{nombre:"Tops",
+const categorias = [{nombre:"Tops",
                     id:1},
                     {nombre:"Bottoms",
                     id:2},
