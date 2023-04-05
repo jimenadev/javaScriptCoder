@@ -108,13 +108,16 @@ const productos = [{id:1,
 let initCart = false
 let cart1;
 
-verProductos = () =>{
-    let nombresImprimir = imprimnir(productos);
-    let idSelected = prompt(`Selecciona un nombre de la lista, digita el número del nombre que quieres comprar:
 
-        ${nombresImprimir}
-    
-    `);
+window.addEventListener("load", cargarProductos);
+
+function cargarProductos(e){
+   loadProductos(productos);
+}
+
+
+const verProductos = () =>{
+   
 
     if(idSelected){
 
@@ -148,24 +151,24 @@ verProductos = () =>{
 
 }
 
-verCart = (cart1) =>{
+const verCart = (cart1) =>{
     let seleccionados = imprimirCart(cart1);
     document.getElementById("cart").innerHTML = seleccionados;
     document.getElementById("cantidadProductos").innerHTML = cart1.getTotalCantidad();
     document.getElementById("totalCarrito").innerHTML = cart1.getTotalPrecio();
 }
 
-eliminar = (id) =>{
+const eliminar = (id) =>{
     cart1.remove(id)
     verCart(cart1)
 }
 
-decrementar = (id,cantidad=1)=>{
+const decrementar = (id,cantidad=1)=>{
     cart1.decrementarProduct(id, cantidad)
     verCart(cart1)
 }
 
-incrementar = (id,cantidad=1)=>{
+const incrementar = (id,cantidad=1)=>{
     cart1.incrementarProduct(id, cantidad)
     verCart(cart1)
 }
@@ -243,30 +246,39 @@ function cart(init) {
   }
 
 
-function imprimnir(arreglo){
-    let imprimir="";
+function loadProductos(arreglo){
+
+    let productosHTML = document.getElementById("productos")
 
     arreglo.forEach(element => {
-        for (const propiedad in element) {
-            const prod = element[propiedad];
-            if(propiedad == "id"){
-                imprimir += `${prod} -`
-            }
-            if(propiedad == "nombre"){
-                imprimir += `${prod}`
-            }
 
-            if(propiedad == "precio"){
-                imprimir += `$ ${prod}\n`
-            }
+        console.log(element)
+            
+        productosHTML.innerHTML += `<div class="col-lg-4 col-md-4 col-sm-6" id="producto_${element.id}">
+                            <div class="single-product-wrap">
+                                <div class="product-image">
+                                    <a href="product-details.html"><img src="${element.urlImage}" alt="Produce Images"></a>
+                                    <span class="label">20% Off</span>
+                                    <div class="product-action">
+                                        <a href="#" class="add-to-cart"><i class="ion-bag"></i></a>
+                                        <a href="#" class="wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                        <a href="#" class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="ion-ios-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h3><a href="product-details.html">${element.nombre}</a></h3>
+                                    <div class="price-box">
+                                        <span class="old-price">${element.precio}</span>
+                                        <span class="new-price">${element.precio}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`
 
-        }
     });
-   
-    return imprimir;
 }
 
-imprimirCart = (cart) =>{
+const  imprimirCart = (cart) =>{
 
     let imprimir="";
 
