@@ -15,93 +15,93 @@ const categorias = [{nombre:"Tops",
 
 const productos = [{id:1,
                     nombre:"Blusa con botón con bolsillo delantero de manga enrollada con botón",
-                    id_nombre:1,
-                    precio:"20000",
+                    id_categoria:1,
+                    precio:20000,
                     descripcion:"djsahfha",
-                    color:"yellow",
+                    color:["Amarillo"],
                     size:["S","M","L"],
                     Oferta:"",
                     urlImage:"https://img.ltwebstatic.com/images3_pi/2021/08/24/1629769472764a9a227d70b3938add7257db27b012.webp"},
                     {id:2,
                     nombre:"Grunge Punk Camisetas de Mujer A rayas Casual",
-                    id_nombre:1,
-                    precio:"15000",
+                    id_categoria:1,
+                    precio:15000,
                     descripcion:"djsahfha",
-                    color:"red",
+                    color:["Rojo"],
                     size:["S","M","L"],
                     Oferta:"",
                     urlImage:"https://img.ltwebstatic.com/images3_pi/2023/03/07/167818465781da2a3ce767e91e0892e1a6c7633bb1.webp"},
                     {id:3,
                     nombre:"Pantalones ajustados PU de cintura alta",
-                    id_nombre:2,
-                    precio:"17000",
+                    id_categoria:2,
+                    precio:17000,
                     descripcion:"djsahfha",
-                    color:"gray",
+                    color:["Gris"],
                     size:["S","M","L"],
                     Oferta:"",
                     urlImage:"https://img.ltwebstatic.com/images3_pi/2022/09/01/1662027238a2ebc72869b152479832ef62517c3cb0.webp"},
                     {id:4,
                     nombre:"Falda floral de muslo con abertura",
-                    id_nombre:2,
-                    precio:"7000",
+                    id_categoria:2,
+                    precio:7000,
                     descripcion:"djsahfha",
-                    color:"black",
+                    color:["Negro"],
                     size:["S","M","L"],
                     Oferta:"",
                     urlImage:"https://img.ltwebstatic.com/images3_pi/2022/05/17/1652757953e649513b7389fb38d17666f2dd5ea3cc.webp"},
                     {id:5,
                     nombre:"Vestido Plantas Bohemio",
-                    id_nombre:3,
-                    precio:"9900",
+                    id_categoria:3,
+                    precio:9900,
                     descripcion:"djsahfha",
-                    color:"beige",
-                    size:["S","M","L"],
+                    color:["Beige"],
+                    size:["S","M"],
                     Oferta:"",
                     urlImage:"https://img.ltwebstatic.com/images3_pi/2021/04/19/1618798645280c8b9819a024ccd406e9d9ab554803.webp"},
                     {id:6,
                     nombre:"Vestido con estampado de leopardo de manga obispo de muslo con abertura",
-                    id_nombre:3,
-                    precio:"15290",
+                    id_categoria:3,
+                    precio:15290,
                     descripcion:"djsahfha",
-                    color:"lightblue",
+                    color:"Celeste",
                     size:["S","M","L","XL"],
                     Oferta:"",
                     urlImage:"https://img.ltwebstatic.com/images3_pi/2022/10/10/166539641937eae9de145ae0330ec01ae10bd82698.webp"},
                     {id:7,
                     nombre:"Conjunto de pijama pantalones con blusa con estampado floral ribete en contraste de satén",
-                    id_nombre:4,
-                    precio:"21000",
+                    id_categoria:4,
+                    precio:21000,
                     descripcion:"djsahfha",
-                    color:"lightblue",
+                    color:["Celeste"],
                     size:["S","M","L","XL"],
                     Oferta:"",
                     urlImage:"https://img.ltwebstatic.com/images3_pi/2022/03/17/1647483778e1e9ef48b2f13054a10bb2693e8d1da7.webp"},
                     {id:8,
                     nombre:"Conjunto de pijama pantalones con blusa con estampado floral ribete en contraste de satén",
-                    id_nombre:4,
-                    precio:"13000",
+                    id_categoria:4,
+                    precio:13000,
                     descripcion:"djsahfha",
-                    color:"lightblue",
+                    color:["Celeste"],
                     size:["S","M","L","XL"],
                     Oferta:"",
                     urlImage:"https://img.ltwebstatic.com/images3_pi/2022/03/17/1647483778e1e9ef48b2f13054a10bb2693e8d1da7.webp"},
         
                     {id:9,
                     nombre:"Leggings deportivos bolsillo de celular de cintura ancha",
-                    id_nombre:5,
-                    precio:"13290",
+                    id_categoria:5,
+                    precio:13290,
                     descripcion:"djsahfha",
-                    color:"black",
-                    size:["S","M","L","XL"],
+                    color:["Negro"],
+                    size:["M","L","XL"],
                     Oferta:"",
                     urlImage:"https://img.ltwebstatic.com/images3_pi/2022/07/07/1657158565f46339e5d9bf19283daaa9850e914dba.webp"},
                     {id:10,
                     nombre:"Leggings deportivos de tie dye con estiramiento alto",
-                    id_nombre:5,
-                    precio:"9890",
+                    id_categoria:5,
+                    precio:9890,
                     descripcion:"djsahfha",
-                    color:"pink",
-                    size:["S","M","L","XL"],
+                    color:["Rosado"],
+                    size:["S","L","XL"],
                     Oferta:"",
                     urlImage:"https://img.ltwebstatic.com/images3_pi/2022/10/18/1666078857b3d9e23210f27eb85cc1cef4d612ff77.webp"},
         
@@ -120,6 +120,11 @@ searchInput.addEventListener("keyup", buscarProductos)
 
 let removeFilter = document.getElementById("removeAllFilter")
 removeFilter.addEventListener("click", removeAllFilter)
+
+let filtrarPorPrecioButton = document.getElementById("filtrarPorPrecio")
+filtrarPorPrecioButton.addEventListener("click", updatePrice )
+
+
 
 
 function cargarPagShop(e){
@@ -142,6 +147,41 @@ function buscarProductos(e){
 function removeAllFilter(e){
     loadProductos(filtrosProductos1.getList());
     loadListProduct(filtrosProductos1.getList())
+}
+
+function filtrarPorCategoria(idCategoria){
+    filtrosProductos1.filtrarPorCategoria(idCategoria)
+    loadProductos(filtrosProductos1.getListSearch())
+    loadListProduct(filtrosProductos1.getListSearch())
+}
+
+function filtrarPorColor(color){
+    filtrosProductos1.filtrarPorColor(color)
+    loadProductos(filtrosProductos1.getListSearch())
+    loadListProduct(filtrosProductos1.getListSearch())
+}
+
+
+function filtrarPorSize(size){
+    filtrosProductos1.filtrarPorSize(size)
+    loadProductos(filtrosProductos1.getListSearch())
+    loadListProduct(filtrosProductos1.getListSearch())
+}
+
+function updatePrice(e){
+    
+    let minPrice = document.getElementById("min-price").value
+    let maxPrice = document.getElementById("max-price").value
+
+    minPrice = minPrice.replace('$', '')
+    maxPrice = maxPrice.replace('$', '')
+
+    minPrice = parseInt(minPrice)
+    maxPrice = parseInt(maxPrice)
+    filtrosProductos1.filtrarPorPrecio(minPrice, maxPrice)
+    loadProductos(filtrosProductos1.getListSearch())
+    loadListProduct(filtrosProductos1.getListSearch())
+
 }
 
 
@@ -328,6 +368,62 @@ function cart(init) {
         getListSearch: function() {
             return this.itemsSearch
         },
+        filtrarPorCategoria(idCategoria){
+            let newProducts =this.items.filter(element => {
+
+                if(element.id_categoria==idCategoria){
+                    return element
+                }
+                
+            });
+
+            this.itemsSearch = newProducts
+        },
+        filtrarPorColor: function(color){
+
+            let newProducts =this.items.filter(element => {
+
+                let isIncludesSize = element.color.includes(color)
+
+                if(isIncludesSize){
+                    return element
+                }
+                
+            });
+
+            this.itemsSearch = newProducts
+
+        },
+        filtrarPorSize: function(size){
+            let newProducts =this.items.filter(element => {
+
+                let isIncludesSize = element.size.includes(size)
+
+                if(isIncludesSize){
+                    return element
+                }
+                
+            });
+
+            this.itemsSearch = newProducts
+        },
+        filtrarPorPrecio: function(minPrecio, maxPrecio){
+            console.log(minPrecio, maxPrecio)
+
+            let newProducts =this.items.filter(element => {
+
+                if(element.precio >= minPrecio && element.precio <= maxPrecio ){
+                    return element
+                }
+                
+            });
+
+            console.log("new",newProducts)
+
+            this.itemsSearch = newProducts
+
+        }
+
         
       
     }
@@ -415,7 +511,7 @@ function loadColor(arreglo){
     let categoriasHTML = document.getElementById("color")
 
     arreglo.forEach(element => {
-        categoriasHTML.innerHTML += ` <li><a class="filtros"  onclick="filtrarPorColor(${element})" >${element}</li>`
+        categoriasHTML.innerHTML += ` <li><a class="filtros"  onclick="filtrarPorColor('${element}')">${element}</li>`
     });
 }
 
@@ -423,7 +519,7 @@ function loadSize(arreglo){
     let categoriasHTML = document.getElementById("size")
 
     arreglo.forEach(element => {
-        categoriasHTML.innerHTML += `<li><a class="filtros"   onclick="filtrarPorSize(${element})" >${element}</li>`
+        categoriasHTML.innerHTML += `<li><a class="filtros"   onclick="filtrarPorSize('${element}')">${element}</li>`
     });
 }
 
