@@ -207,9 +207,7 @@ function ordenarProductos(e){
             filtrosProductos1.sortPrice(2)
             break;
         case "5":
-            removeAllFilter()
-            return
-            break;
+            return removeAllFilter()
     }
 
     loadProductos(filtrosProductos1.getListSearch())
