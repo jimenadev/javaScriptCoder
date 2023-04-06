@@ -1,3 +1,7 @@
+
+/*************Variables************************* */
+
+
 const color = ["Negro","Blanco","Rojo", "Verde", "Amarillo", "Azul", "Naranjo", "Beige", "Cafe", "Morado", "Gris", "Rosado", "Celeste"]
 const size = ["S", "M", "L", "XL", "XXL"]
 
@@ -113,6 +117,10 @@ let cart1;
 let filtrosProductos1;
 
 
+
+/*************Eventos************************* */
+
+
 window.addEventListener("load", cargarPagShop)
 
 let searchInput = document.getElementById("search")
@@ -129,6 +137,7 @@ sortbySelect.addEventListener("change", ordenarProductos )
 
 
 
+/*************Métodos Productos************************* */
 
 function cargarPagShop(e){
     filtrosProductos1 = filtrosProductos();
@@ -215,6 +224,10 @@ function ordenarProductos(e){
 }
 
 
+
+/***************Metodos Cart*********************************** */
+
+
 function addToCart(id_producto){
     if(!initCart){
         cart1 = cart(1)
@@ -233,54 +246,6 @@ function addToCart(id_producto){
 
 }
 
-const actualizarMiniCart = (cart) =>{
-
-    let miniCartHTML = document.getElementById("mini-cart")
-    let cartTotalHTML = document.getElementById("cart-total")
-    let miniCart = ""
-
-    cart.getList().forEach(element => {
-      
-        miniCart += `<li class="cart-item">
-                                    <div class="cart-image">
-                                        <a href="single-product.html"><img alt="" src="${element.urlImage}"></a>
-                                    </div>
-                                    <div class="cart-title">
-                                        <a href="product-details.html">
-                                            <h4>${element.producto}</h4>
-                                        </a>
-                                        <span class="quantity"> ${element.cantidad}</span>
-                                        <div class="price-box"><span class="new-price">$${element.total}</span></div>
-                                        <a class="remove_from_cart" onclick="eliminar(${element.id})"><i class="ion-ios-trash-outline"></i></a>
-                                    </div>
-                                </li>`
-      
-        });
-
-        miniCart += ` <li class="mini-cart-btns">
-                            <div class="cart-btns">
-                                <a href="cart.html">Ver Carrito</a>
-                                <a href="checkout.html">Checkout</a>
-                            </div>
-                        </li>`
-
-        miniCartHTML.innerHTML = miniCart
-        cartTotalHTML.innerHTML = cart1.getTotalCantidad();
-
-
-   
-
-}
-
-
-
-const verCart = (cart1) =>{
-    let seleccionados = imprimirCart(cart1);
-    document.getElementById("cart").innerHTML = seleccionados;
-    document.getElementById("cantidadProductos").innerHTML = cart1.getTotalCantidad();
-    document.getElementById("totalCarrito").innerHTML = cart1.getTotalPrecio();
-}
-
 const eliminar = (id) =>{
     cart1.remove(id)
     actualizarMiniCart(cart1)
@@ -295,6 +260,19 @@ const incrementar = (id,cantidad=1)=>{
     cart1.incrementarProduct(id, cantidad)
     actualizarMiniCart(cart1)
 }
+
+const setCartLocalStorage = (cart) =>{
+    let cartJSON = JSON.stringify(cart)
+    console.log(cartJSON)
+    localStorage.setItem('cart', cartJSON)
+}
+
+const getCartLocalStorage = () =>{
+    let cartJSON = localStorage.getItem('cart')
+    return JSON.parse(cartJSON)
+}
+
+/*************Objetos Cart y Productos************************* */
 
 function cart(init) {
     return {
@@ -501,6 +479,7 @@ function cart(init) {
   }
 
 
+  /*************Renderizar Productos***********/
 function loadProductos(arreglo){
 
     document.getElementById("productos").innerHTML = ""
@@ -593,5 +572,47 @@ function loadSize(arreglo){
     });
 }
 
+
+
+/******************Renderizar Cart******************************* */
+
+const actualizarMiniCart = (cart) =>{
+
+    setCartLocalStorage(cart)
+
+    let miniCartHTML = document.getElementById("mini-cart")
+    let cartTotalHTML = document.getElementById("cart-total")
+    let miniCart = ""
+
+    cart.getList().forEach(element => {
+      
+        miniCart += `<li class="cart-item">
+                                    <div class="cart-image">
+                                        <a href="single-product.html"><img alt="" src="${element.urlImage}"></a>
+                                    </div>
+                                    <div class="cart-title">
+                                        <a href="product-details.html">
+                                            <h4>${element.producto}</h4>
+                                        </a>
+                                        <span class="quantity"> ${element.cantidad}</span>
+                                        <div class="price-box"><span class="new-price">$${element.total}</span></div>
+                                        <a class="remove_from_cart" onclick="eliminar(${element.id})"><i class="ion-ios-trash-outline"></i></a>
+                                    </div>
+                                </li>`
+      
+        });
+
+        miniCart += ` <li class="mini-cart-btns">
+                            <div class="cart-btns">
+                                <a href="cart.html">Ver Carrito</a>
+                                <a href="checkout.html">Checkout</a>
+                            </div>
+                        </li>`
+
+        miniCartHTML.innerHTML = miniCart
+        cartTotalHTML.innerHTML = cart1.getTotalCantidad();
+   
+
+}
 
 
