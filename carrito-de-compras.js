@@ -128,8 +128,45 @@ function addToCart(id_producto){
     if(cart1.search(id_producto)){
         incrementar(id_producto)
     }else{
-        cart1.add({id:id_producto,producto:prodSelec.nombre, cantidad:1, precioUnitario: prodSelec.precio,total:prodSelec.precio})
+        cart1.add({id:id_producto,producto:prodSelec.nombre, cantidad:1, precioUnitario: prodSelec.precio,total:prodSelec.precio, urlImage:prodSelec.urlImage})
     }
+
+    actualizarMiniCart(cart1);
+
+}
+
+const actualizarMiniCart = (cart) =>{
+
+    let miniCartHTML = document.getElementById("mini-cart")
+    let miniCart = ""
+
+    cart.getList().forEach(element => {
+      
+        miniCart += `<li class="cart-item">
+                                    <div class="cart-image">
+                                        <a href="single-product.html"><img alt="" src="${element.urlImage}"></a>
+                                    </div>
+                                    <div class="cart-title">
+                                        <a href="product-details.html">
+                                            <h4>${element.producto}</h4>
+                                        </a>
+                                        <span class="quantity"> ${element.cantidad}</span>
+                                        <div class="price-box"><span class="new-price">$${element.total}</span></div>
+                                        <a class="remove_from_cart" onclick="eliminar(${element.id})"><i class="icon-trash icons"></i></a>
+                                    </div>
+                                </li>`
+      
+        });
+
+        miniCart += ` <li class="mini-cart-btns">
+                            <div class="cart-btns">
+                                <a href="cart.html">Ver Carrito</a>
+                                <a href="checkout.html">Checkout</a>
+                            </div>
+                        </li>`
+
+        miniCartHTML.innerHTML = miniCart
+   
 
 }
 
@@ -235,8 +272,6 @@ function loadProductos(arreglo){
     let productosHTML = document.getElementById("productos")
 
     arreglo.forEach(element => {
-
-        console.log(element)
             
         productosHTML.innerHTML += `<div class="col-lg-4 col-md-4 col-sm-6">
                                     <input type="hidden" value="producto_${element.id}" class="id_producto">
@@ -263,13 +298,3 @@ function loadProductos(arreglo){
     });
 }
 
-const  imprimirCart = (cart) =>{
-
-    let imprimir="";
-
-    cart.getList().forEach(element => {
-        imprimir += `<li>${element.producto} - <button onclick="decrementar(${element.id})" >-</button>  ${element.cantidad} <button onclick="incrementar(${element.id})" >+</button>  Total:${element.total}  <button onclick="eliminar(${element.id})">eliminar</button> \n</li>`;
-    });
-   
-    return imprimir;
-}
