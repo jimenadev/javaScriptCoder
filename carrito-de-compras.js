@@ -117,6 +117,7 @@ window.addEventListener("load", cargarPagShop)
 
 function cargarPagShop(e){
    loadProductos(productos);
+   loadListProduct(productos)
    loadCategorias(categorias);
    loadColor(color);
    loadSize(size)
@@ -306,6 +307,40 @@ function loadProductos(arreglo){
                         </div>`
 
     });
+}
+
+function loadListProduct(arreglo){
+
+    let productosHTML = document.getElementById("list-product")
+
+    arreglo.forEach(element => {
+            
+        productosHTML.innerHTML += ` <div class="row product-layout-list">
+                    <div class="col-lg-4 col-md-5">
+                        <div class="single-product-wrap">
+                            <div class="product-image">
+                                <a href="product-details.html"><img src="${element.urlImage}" alt="Produce Images"></a>
+                                <span class="label">30% Off</span>
+                                <div class="product-action">
+                                    <a  class="add-to-cart"  onclick="addToCart(${element.id})"><i class="ion-bag"></i></a>
+                                    <a  class="wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                    <a  class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="ion-ios-search"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-7">
+                        <div class="product-content text-start">
+                            <h3><a href="product-details.html">${element.nombre}</a></h3>
+                            <div class="price-box">
+                                <span class="old-price">${element.precio}</span>
+                                <span class="new-price">${element.precio}</span>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis pariatur ipsa sint consectetur velit maiores sit voluptates aut tempora totam, consequatur iste quod suscipit natus. Explicabo facere neque adipisci odio.</p>
+                        </div>
+                    </div>
+                </div>`
+    })
 }
 
 function loadCategorias(arreglo){
