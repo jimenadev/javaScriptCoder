@@ -115,9 +115,11 @@ let filtrosProductos1;
 
 window.addEventListener("load", cargarPagShop)
 
-let searchButton = document.getElementById("searchProducts")
 let searchInput = document.getElementById("search")
 searchInput.addEventListener("keyup", buscarProductos)
+
+let removeFilter = document.getElementById("removeAllFilter")
+removeFilter.addEventListener("click", removeAllFilter)
 
 
 function cargarPagShop(e){
@@ -131,15 +133,15 @@ function cargarPagShop(e){
 }
 
 function buscarProductos(e){
-
-    console.log("entro")
     let searchText = document.getElementById("search").value
-
     filtrosProductos1.search(searchText)
-
     loadProductos(filtrosProductos1.getListSearch())
+    loadListProduct(filtrosProductos1.getListSearch())
+}
 
-    console.log("productosSearched1",filtrosProductos1.getListSearch())
+function removeAllFilter(e){
+    loadProductos(filtrosProductos1.getList());
+    loadListProduct(filtrosProductos1.getList())
 }
 
 

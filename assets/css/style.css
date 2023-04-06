@@ -13687,12 +13687,27 @@ ul.minicart-pricing-box li:last-child {
   font-weight: 500;
   margin-right: 20px;
 }
+
+
+.quitarFiltros li a {
+  font-size: 1.5rem;
+  font-weight: 200;
+  margin-right: 20px;
+}
+
+.quitarFiltros li a i {
+  margin-right: 1vw;
+  color: #ff5151;
+}
+
+
 .shop-item-filter-list li a .active {
   color: #ff5151;
 }
 .shop-item-filter-list li .active {
   color: #ff5151;
 }
+
 
 .product-short {
   display: -webkit-box;
