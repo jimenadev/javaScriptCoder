@@ -110,17 +110,36 @@ const productos = [{id:1,
 
 let initCart = false
 let cart1;
+let filtrosProductos1;
 
 
 window.addEventListener("load", cargarPagShop)
 
+let searchButton = document.getElementById("searchProducts")
+let searchInput = document.getElementById("search")
+searchInput.addEventListener("keyup", buscarProductos)
+
 
 function cargarPagShop(e){
-   loadProductos(productos);
-   loadListProduct(productos)
-   loadCategorias(categorias);
-   loadColor(color);
-   loadSize(size)
+    filtrosProductos1 = filtrosProductos();
+    filtrosProductos1.add(productos)
+    loadProductos(filtrosProductos1.getList());
+    loadListProduct(filtrosProductos1.getList())
+    loadCategorias(categorias);
+    loadColor(color);
+    loadSize(size)
+}
+
+function buscarProductos(e){
+
+    console.log("entro")
+    let searchText = document.getElementById("search").value
+
+    filtrosProductos1.search(searchText)
+
+    loadProductos(filtrosProductos1.getListSearch())
+
+    console.log("productosSearched1",filtrosProductos1.getListSearch())
 }
 
 
@@ -278,7 +297,45 @@ function cart(init) {
   }
 
 
+  function filtrosProductos() {
+    return {
+        items: [],
+        itemsSearch:[],
+        add: function(productos){
+            this.items=productos
+        },
+        search: function(nombre){
+            nombre = nombre.toLowerCase()
+            let newProducts =this.items.filter(element => {
+
+                let nombreProduct = element.nombre.toLowerCase()
+                let isIncludes = nombreProduct.includes(nombre)
+
+                if(isIncludes){
+                    return element
+                }
+                
+            });
+
+            this.itemsSearch = newProducts
+          
+        },
+        getList: function() {
+            return this.items
+        },
+        getListSearch: function() {
+            return this.itemsSearch
+        },
+        
+      
+    }
+  
+  }
+
+
 function loadProductos(arreglo){
+
+    document.getElementById("productos").innerHTML = ""
 
     let productosHTML = document.getElementById("productos")
 
@@ -310,6 +367,7 @@ function loadProductos(arreglo){
 }
 
 function loadListProduct(arreglo){
+    document.getElementById("list-product").innerHTML = ""
 
     let productosHTML = document.getElementById("list-product")
 
@@ -366,4 +424,6 @@ function loadSize(arreglo){
         categoriasHTML.innerHTML += `<li><a class="filtros"   onclick="filtrarPorSize(${element})" >${element}</li>`
     });
 }
+
+
 
