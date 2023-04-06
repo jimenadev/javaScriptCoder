@@ -140,13 +140,14 @@ sortbySelect.addEventListener("change", ordenarProductos )
 /*************Métodos Productos************************* */
 
 function cargarPagShop(e){
-    filtrosProductos1 = filtrosProductos();
+    filtrosProductos1 = filtrosProductos()
     filtrosProductos1.add(productos)
-    loadProductos(filtrosProductos1.getList());
+    loadProductos(filtrosProductos1.getList())
     loadListProduct(filtrosProductos1.getList())
-    loadCategorias(categorias);
-    loadColor(color);
+    loadCategorias(categorias)
+    loadColor(color)
     loadSize(size)
+    loadCart()
 }
 
 function buscarProductos(e){
@@ -157,9 +158,7 @@ function buscarProductos(e){
 }
 
 function removeAllFilter(){
-    console.log("entro")
-    console.log(filtrosProductos1.getList())
-    loadProductos(filtrosProductos1.getList());
+    loadProductos(filtrosProductos1.getList())
     loadListProduct(filtrosProductos1.getList())
 }
 
@@ -227,6 +226,27 @@ function ordenarProductos(e){
 
 /***************Metodos Cart*********************************** */
 
+const loadCart = ()=>{
+    let cartLS = getCartLocalStorage()
+    let itemsLS = cartLS[0]["items"]
+    console.log(itemsLS.length)
+
+    if(itemsLS.length>0){
+        cart1 = cart(1)
+        initCart=true
+        itemsLS.forEach(element => {
+            cart1.add(element)
+        })
+        
+        actualizarMiniCart(cart1);
+    }else{
+
+        console.log("innertext")
+        document.getElementById("cart-total").innerText = 0
+
+
+    }
+}
 
 function addToCart(id_producto){
     if(!initCart){
@@ -269,7 +289,9 @@ const setCartLocalStorage = (cart) =>{
 
 const getCartLocalStorage = () =>{
     let cartJSON = localStorage.getItem('cart')
-    return JSON.parse(cartJSON)
+    let arrayCart = []
+    arrayCart.push(JSON.parse(cartJSON))
+    return arrayCart
 }
 
 /*************Objetos Cart y Productos************************* */
