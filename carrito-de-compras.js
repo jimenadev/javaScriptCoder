@@ -1,3 +1,6 @@
+const color = ["Negro","Blanco","Rojo", "Verde", "Amarillo", "Azul", "Naranjo", "Beige", "Cafe", "Morado", "Gris", "Rosado", "Celeste"]
+const size = ["S", "M", "L", "XL", "XXL"]
+
 const categorias = [{nombre:"Tops",
                     id:1},
                     {nombre:"Bottoms",
@@ -109,11 +112,14 @@ let initCart = false
 let cart1;
 
 
-window.addEventListener("load", cargarProductos)
+window.addEventListener("load", cargarPagShop)
 
 
-function cargarProductos(e){
+function cargarPagShop(e){
    loadProductos(productos);
+   loadCategorias(categorias);
+   loadColor(color);
+   loadSize(size)
 }
 
 
@@ -299,6 +305,30 @@ function loadProductos(arreglo){
                             </div>
                         </div>`
 
+    });
+}
+
+function loadCategorias(arreglo){
+    let categoriasHTML = document.getElementById("categorias")
+
+    arreglo.forEach(element => {
+        categoriasHTML.innerHTML += `<li><a class="filtros" onclick="filtrarPorCategoria(${element.id})">${element.nombre}</li>`
+    });
+}
+
+function loadColor(arreglo){
+    let categoriasHTML = document.getElementById("color")
+
+    arreglo.forEach(element => {
+        categoriasHTML.innerHTML += ` <li><a class="filtros"  onclick="filtrarPorColor(${element})" >${element}</li>`
+    });
+}
+
+function loadSize(arreglo){
+    let categoriasHTML = document.getElementById("size")
+
+    arreglo.forEach(element => {
+        categoriasHTML.innerHTML += `<li><a class="filtros"   onclick="filtrarPorSize(${element})" >${element}</li>`
     });
 }
 

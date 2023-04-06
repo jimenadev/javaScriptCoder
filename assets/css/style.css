@@ -136,6 +136,10 @@ a, button {
   cursor: pointer;
 }
 
+.filtros:hover{
+  color: #ff5151;
+}
+
 a:hover {
   color: #ff5151;
 }
@@ -13629,7 +13633,7 @@ ul.minicart-pricing-box li:last-child {
   border: medium none;
   padding: 0 8px 0 0;
   text-align: center;
-  width: 40px;
+  width: 5vw;
 }
 .filter-price-cont .input-type:last-child {
   padding-left: 8px;
