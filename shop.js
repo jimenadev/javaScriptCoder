@@ -604,7 +604,6 @@ function loadProductos(arreglo){
                                     <div class="product-action">
                                         <a class="add-to-cart" onclick="addToCart(${element.id})" ><i class="ion-bag"></i></a>
                                         <a  class="wishlist" onclick="addToWishlist(${element.id})"><i class="ion-android-favorite-outline"></i></a>
-                                        <a  class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="ion-ios-search"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -635,8 +634,7 @@ function loadListProduct(arreglo){
                                 <span class="label">30% Off</span>
                                 <div class="product-action">
                                     <a  class="add-to-cart"  onclick="addToCart(${element.id})"><i class="ion-bag"></i></a>
-                                    <a  class="wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                    <a  class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="ion-ios-search"></i></a>
+                                    <a  class="wishlist" onclick="addToWishlist(${element.id})"><i class="ion-android-favorite-outline"></i></a>
                                 </div>
                             </div>
                         </div>
