@@ -140,6 +140,10 @@ a:hover {
   color: #ff5151;
 }
 
+a i:hover {
+  color: #ff5151;
+}
+
 a, button, img, input, span {
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -9528,10 +9532,10 @@ img.mfp-img {
   text-decoration: line-through;
 }
 .shopping-cart-wrap ul.mini-cart .cart-item .cart-title .remove_from_cart {
-  margin-top: 10px;
+  margin-top: -5vh;
   position: absolute;
   right: 0;
-  font-size: 14px;
+  font-size: 3rem;
 }
 .shopping-cart-wrap ul.mini-cart .subtotal-titles .subtotal-titles {
   display: -webkit-box;

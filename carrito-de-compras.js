@@ -152,7 +152,7 @@ const actualizarMiniCart = (cart) =>{
                                         </a>
                                         <span class="quantity"> ${element.cantidad}</span>
                                         <div class="price-box"><span class="new-price">$${element.total}</span></div>
-                                        <a class="remove_from_cart" onclick="eliminar(${element.id})"><i class="icon-trash icons"></i></a>
+                                        <a class="remove_from_cart" onclick="eliminar(${element.id})"><i class="ion-ios-trash-outline"></i></a>
                                     </div>
                                 </li>`
       
@@ -181,17 +181,17 @@ const verCart = (cart1) =>{
 
 const eliminar = (id) =>{
     cart1.remove(id)
-    verCart(cart1)
+    actualizarMiniCart(cart1)
 }
 
 const decrementar = (id,cantidad=1)=>{
     cart1.decrementarProduct(id, cantidad)
-    verCart(cart1)
+    actualizarMiniCart(cart1)
 }
 
 const incrementar = (id,cantidad=1)=>{
     cart1.incrementarProduct(id, cantidad)
-    verCart(cart1)
+    actualizarMiniCart(cart1)
 }
 
 function cart(init) {
