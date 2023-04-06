@@ -138,6 +138,7 @@ function addToCart(id_producto){
 const actualizarMiniCart = (cart) =>{
 
     let miniCartHTML = document.getElementById("mini-cart")
+    let cartTotalHTML = document.getElementById("cart-total")
     let miniCart = ""
 
     cart.getList().forEach(element => {
@@ -166,6 +167,9 @@ const actualizarMiniCart = (cart) =>{
                         </li>`
 
         miniCartHTML.innerHTML = miniCart
+        cartTotalHTML.innerHTML = cart1.getTotalCantidad();
+
+
    
 
 }
