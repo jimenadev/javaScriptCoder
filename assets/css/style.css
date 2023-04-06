@@ -9065,7 +9065,7 @@ img.mfp-img {
 }
 
 .header-top-inner {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgb(181, 178, 178);
 }
 
 .top-info {
@@ -9626,7 +9626,7 @@ img.mfp-img {
 }
 
 .mobile-header-top {
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid rgb(181, 178, 178);
 }
 
 .mobile-header-top .header-top-settings {
@@ -13241,6 +13241,12 @@ ul.minicart-pricing-box li:last-child {
 -------------------------*/
 .footer-top {
   background: #f6f6f6;
+  margin-left: 20px;
+  
+}
+
+.footer-top .container{
+  border-top: 1px solid rgb(181, 178, 178);
 }
 
 .widget-footer .footer-logo {
