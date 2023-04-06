@@ -109,47 +109,31 @@ let initCart = false
 let cart1;
 
 
-window.addEventListener("load", cargarProductos);
+window.addEventListener("load", cargarProductos)
+
 
 function cargarProductos(e){
    loadProductos(productos);
 }
 
 
-const verProductos = () =>{
-   
+function addToCart(id_producto){
+    if(!initCart){
+        cart1 = cart(1)
+        initCart=true
+    }
 
-    if(idSelected){
-
-        if(!isNaN(idSelected)){
-            idSelected = parseInt(idSelected);
-
-            if(!initCart){
-                cart1 = cart(1)
-                initCart=true
-            }
-            
-
-            let prodSelec = productos.find((p) => p.id===idSelected)
-
-            if(cart1.search(idSelected)){
-                incrementar(idSelected)
-            }else{
-                cart1.add({id:idSelected,producto:prodSelec.nombre, cantidad:1, precioUnitario: prodSelec.precio,total:prodSelec.precio})
-                console.log(cart1)
-                verCart(cart1)
-            }
-
-            
-
-        }else{
-            alert("debe digitar un valor númerico");
-        }
-
-       
+    let prodSelec = productos.find((p) => p.id===id_producto)
+    
+    if(cart1.search(id_producto)){
+        incrementar(id_producto)
+    }else{
+        cart1.add({id:id_producto,producto:prodSelec.nombre, cantidad:1, precioUnitario: prodSelec.precio,total:prodSelec.precio})
     }
 
 }
+
+
 
 const verCart = (cart1) =>{
     let seleccionados = imprimirCart(cart1);
@@ -254,15 +238,16 @@ function loadProductos(arreglo){
 
         console.log(element)
             
-        productosHTML.innerHTML += `<div class="col-lg-4 col-md-4 col-sm-6" id="producto_${element.id}">
+        productosHTML.innerHTML += `<div class="col-lg-4 col-md-4 col-sm-6">
+                                    <input type="hidden" value="producto_${element.id}" class="id_producto">
                             <div class="single-product-wrap">
                                 <div class="product-image">
                                     <a href="product-details.html"><img src="${element.urlImage}" alt="Produce Images"></a>
                                     <span class="label">20% Off</span>
                                     <div class="product-action">
-                                        <a href="#" class="add-to-cart"><i class="ion-bag"></i></a>
-                                        <a href="#" class="wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        <a href="#" class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="ion-ios-search"></i></a>
+                                        <a class="add-to-cart" onclick="addToCart(${element.id})" ><i class="ion-bag"></i></a>
+                                        <a  class="wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                        <a  class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="ion-ios-search"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-content">
