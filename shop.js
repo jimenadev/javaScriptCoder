@@ -113,8 +113,10 @@ const productos = [{id:1,
 
 
 let initCart = false
+let initWishlist=false
 let cart1;
 let filtrosProductos1;
+let wishlist1;
 
 
 
@@ -148,6 +150,7 @@ function cargarPagShop(e){
     loadColor(color)
     loadSize(size)
     loadCart()
+    loadWishlist()
 }
 
 function buscarProductos(e){
@@ -228,20 +231,25 @@ function ordenarProductos(e){
 
 const loadCart = ()=>{
     let cartLS = getCartLocalStorage()
-    let itemsLS = cartLS[0]["items"]
-    console.log(itemsLS.length)
 
-    if(itemsLS.length>0){
-        cart1 = cart(1)
-        initCart=true
-        itemsLS.forEach(element => {
-            cart1.add(element)
-        })
-        
-        actualizarMiniCart(cart1);
-    }else{
-        document.getElementById("cart-total").innerText = 0
-    }
+    console.log(cartLS[0])
+   if(cartLS[0]  !== null){
+        let itemsLS = cartLS[0]["items"]
+    
+
+        if(itemsLS.length>0){
+            cart1 = cart(1)
+            initCart=true
+            itemsLS.forEach(element => {
+                cart1.add(element)
+            })
+            
+            actualizarMiniCart(cart1);
+        }else{
+            document.getElementById("cart-total").innerText = 0
+        }
+   }
+    
 }
 
 function addToCart(id_producto){
@@ -290,7 +298,59 @@ const getCartLocalStorage = () =>{
     return arrayCart
 }
 
-/*************Objetos Cart y Productos************************* */
+/***************Metodos Wishlist*********************************** */
+
+const loadWishlist = ()=>{
+    let wishlistLS = getWishlistLocalStorage()
+    console.log(wishlistLS)
+    if(wishlistLS[0] !== null){
+        let itemsLS = wishlistLS[0]["items"]
+        console.log(itemsLS.length)
+    
+        if(itemsLS.length>0){
+            wishlist1 = wishlist(1)
+            initWishlist=true
+            itemsLS.forEach(element => {
+                wishlist1.add(element)
+            })
+            
+        }
+    }
+   
+}
+
+const addToWishlist = (id_producto) =>{
+    if(!initWishlist){
+        wishlist1 = wishlist(1)
+        initWishlist=true
+    }
+
+    let prodSelec = productos.find((p) => p.id===id_producto)
+    
+    if(!wishlist1.search(id_producto)){
+        wishlist1.add({id:id_producto,producto:prodSelec.nombre,precioUnitario: prodSelec.precio, urlImage:prodSelec.urlImage})
+        setWishlistLocalStorage(wishlist1)
+    }
+
+    
+
+}
+
+
+const setWishlistLocalStorage = (wishlist) =>{
+    let wishlistJSON = JSON.stringify(wishlist)
+    localStorage.setItem('wishlist', wishlistJSON)
+}
+
+const getWishlistLocalStorage = () =>{
+    let wishlistJSON = localStorage.getItem('wishlist')
+    let arrayWishlist = []
+    arrayWishlist.push(JSON.parse(wishlistJSON))
+    return arrayWishlist
+}
+
+
+/*************Objetos Cart, Productos, Wishlist ************************* */
 
 function cart(init) {
     return {
@@ -493,8 +553,37 @@ function cart(init) {
     
       
     }
+
+  }
+
+function wishlist(init) {
+    return {
+        id:init,
+        items: [],
+        search: function(id){
+            let item = this.items.find((item) => item.id===id)
+            return (item) ? true: false
+        },
+        add: function(item) {
+          this.items.push(item);
+        },
+        remove: function(id) {
+            let item = this.items.find((item) => item.id===id)
+            if (this.items.includes(item)) {
+                let index = this.items.indexOf(item)
+                if (index > -1) {
+                  this.items.splice(index, 1)
+                }
+            }
+        },
+        getList: function() {
+            return this.items
+        },
+    }
   
   }
+
+
 
 
   /*************Renderizar Productos***********/
@@ -514,7 +603,7 @@ function loadProductos(arreglo){
                                     <span class="label">20% Off</span>
                                     <div class="product-action">
                                         <a class="add-to-cart" onclick="addToCart(${element.id})" ><i class="ion-bag"></i></a>
-                                        <a  class="wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                        <a  class="wishlist" onclick="addToWishlist(${element.id})"><i class="ion-android-favorite-outline"></i></a>
                                         <a  class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="ion-ios-search"></i></a>
                                     </div>
                                 </div>
