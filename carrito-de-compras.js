@@ -124,6 +124,9 @@ removeFilter.addEventListener("click", removeAllFilter)
 let filtrarPorPrecioButton = document.getElementById("filtrarPorPrecio")
 filtrarPorPrecioButton.addEventListener("click", updatePrice )
 
+let sortbySelect = document.getElementById("sortby")
+sortbySelect.addEventListener("change", ordenarProductos )
+
 
 
 
@@ -144,13 +147,15 @@ function buscarProductos(e){
     loadListProduct(filtrosProductos1.getListSearch())
 }
 
-function removeAllFilter(e){
+function removeAllFilter(){
+    console.log("entro")
+    console.log(filtrosProductos1.getList())
     loadProductos(filtrosProductos1.getList());
     loadListProduct(filtrosProductos1.getList())
 }
 
 function filtrarPorCategoria(idCategoria){
-    filtrosProductos1.filtrarPorCategoria(idCategoria)
+ 
     loadProductos(filtrosProductos1.getListSearch())
     loadListProduct(filtrosProductos1.getListSearch())
 }
@@ -169,7 +174,7 @@ function filtrarPorSize(size){
 }
 
 function updatePrice(e){
-    
+
     let minPrice = document.getElementById("min-price").value
     let maxPrice = document.getElementById("max-price").value
 
@@ -182,6 +187,33 @@ function updatePrice(e){
     loadProductos(filtrosProductos1.getListSearch())
     loadListProduct(filtrosProductos1.getListSearch())
 
+}
+
+function ordenarProductos(e){
+    e.preventDefault();
+    let select = e.target
+    let opcionSeleccionadaOrder = select.options[sortbySelect.selectedIndex].value
+
+    switch(opcionSeleccionadaOrder){
+        case "1":
+            filtrosProductos1.sortNombre(1)
+            break;
+        case "2":
+            filtrosProductos1.sortNombre(2)
+            break;
+        case "3":
+            filtrosProductos1.sortPrice(1)
+        case "4": 
+            filtrosProductos1.sortPrice(2)
+            break;
+        case "5":
+            removeAllFilter()
+            return
+            break;
+    }
+
+    loadProductos(filtrosProductos1.getListSearch())
+    loadListProduct(filtrosProductos1.getListSearch())
 }
 
 
@@ -343,10 +375,14 @@ function cart(init) {
     return {
         items: [],
         itemsSearch:[],
+        orderPrecio:0,
+        orderNombre:0,
         add: function(productos){
             this.items=productos
         },
         search: function(nombre){
+            this.orderPrecio=0
+            this.orderNombre=0
             nombre = nombre.toLowerCase()
             let newProducts =this.items.filter(element => {
 
@@ -369,6 +405,8 @@ function cart(init) {
             return this.itemsSearch
         },
         filtrarPorCategoria(idCategoria){
+            this.orderPrecio=0
+            this.orderNombre=0
             let newProducts =this.items.filter(element => {
 
                 if(element.id_categoria==idCategoria){
@@ -380,7 +418,8 @@ function cart(init) {
             this.itemsSearch = newProducts
         },
         filtrarPorColor: function(color){
-
+            this.orderPrecio=0
+            this.orderNombre=0
             let newProducts =this.items.filter(element => {
 
                 let isIncludesSize = element.color.includes(color)
@@ -395,6 +434,8 @@ function cart(init) {
 
         },
         filtrarPorSize: function(size){
+            this.orderPrecio=0
+            this.orderNombre=0
             let newProducts =this.items.filter(element => {
 
                 let isIncludesSize = element.size.includes(size)
@@ -408,7 +449,8 @@ function cart(init) {
             this.itemsSearch = newProducts
         },
         filtrarPorPrecio: function(minPrecio, maxPrecio){
-            console.log(minPrecio, maxPrecio)
+            this.orderPrecio=0
+            this.orderNombre=0
 
             let newProducts =this.items.filter(element => {
 
@@ -418,13 +460,43 @@ function cart(init) {
                 
             });
 
-            console.log("new",newProducts)
-
             this.itemsSearch = newProducts
 
-        }
+        },
+        sortPrice: function(order){
+            this.itemsSearch = [...this.items]
+            this.itemsSearch.sort((x, y) => x.precio - y.precio)  
+            if(this.orderPrecio != 0){
+                if(order>this.orderPrecio){
+                    this.itemsSearch.reverse()
+                }else if(order<this.orderPrecio){
+                    this.itemsSearch.sort((x, y) => x.precio - y.precio)    
+                }
+            }else{
+                if(order==2){
+                    this.itemsSearch.reverse()
+                }
+            }
 
-        
+            this.orderPrecio=order
+        },
+        sortNombre: function(order){
+            this.itemsSearch = [...this.items]
+            this.itemsSearch.sort((x, y) => x.nombre.localeCompare(y.nombre)); 
+            if(this.orderNombre != 0){
+                if(order>this.orderNombre){
+                    this.itemsSearch.reverse()
+                }else if(order<this.orderNombre){
+                    this.itemsSearch.sort((x, y) => x.nombre.localeCompare(y.nombre)); 
+                }
+            }else{
+                if(order==2){
+                    this.itemsSearch.reverse()
+                }
+            }
+            this.orderNombre=order
+        }
+    
       
     }
   
