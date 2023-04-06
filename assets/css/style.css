@@ -14212,6 +14212,16 @@ ul.minicart-pricing-box li:last-child {
   border-right: 1px solid #ebebeb;
 }
 
+.plantmore-product-thumbnail{
+  width: 3vw;
+  height: 8vh;
+}
+
+.plantmore-product-thumbnail img{
+  width: 100%;
+  height: 100%;
+}
+
 .plantmore-product-quantity > input {
   text-align: center;
   width: 48px;

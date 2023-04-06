@@ -219,11 +219,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="breadcrumb-title">Shop</h2>
+                        <h2 class="breadcrumb-title">Cart</h2>
                         <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-list">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Shop</li>
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active">Cart</li>
                         </ul>
                         <!-- breadcrumb-list end -->
                     </div>
@@ -234,160 +234,56 @@
 
 
         <!-- main-content-wrap start -->
-        <div class="main-content-wrap shop-page section-ptb">
+        <div class="main-content-wrap section-ptb cart-page">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 order-lg-1 order-2">
-
-                      
-                        <!-- shop-sidebar-wrap start -->
-                        <div class="shop-sidebar-wrap">
-
-                           
-
-                            <!-- shop-sidebar start -->
-                            <div class="shop-sidebar mb-30">
-                                <h4 class="title">FILTRO POR PRECIO</h4>
-                                <!-- filter-price-content start -->
-                                <div class="filter-price-content">
-                                    <form action="#" method="post">
-                                        <div id="price-slider" class="price-slider"></div>
-                                        <div class="filter-price-wapper">
-                                            <div class="filter-price-cont">
-                                                <span>Precio:</span>
-                                                <div class="input-type">
-                                                    <input type="text" id="min-price" readonly="" />
-                                                </div>
-                                                <span>—</span>
-                                                <div class="input-type">
-                                                    <input type="text" id="max-price" readonly="" />
-                                                </div>
-                                                <a class="add-to-cart-button" id="filtrarPorPrecio">
-                                                    <span>FILTRO</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- filter-price-content end -->
+                    <div class="col-12">
+                        <form action="#" class="cart-table">
+                            <div class="table-content table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="plantmore-product-thumbnail">Imagen</th>
+                                            <th class="cart-product-name">Productos</th>
+                                            <th class="plantmore-product-price">Precio Unitario</th>
+                                            <th class="plantmore-product-quantity">Cantidad</th>
+                                            <th class="plantmore-product-subtotal">Total</th>
+                                            <th class="plantmore-product-remove">Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="list-cart">
+                                       
+                                    </tbody>
+                                </table>
                             </div>
-                            <!-- shop-sidebar end -->
-
-                            <!-- shop-sidebar start -->
-                            <div class="shop-sidebar mb-30">
-                                <h4 class="title">CATEGORIAS</h4>
-                                <ul id="categorias">
-                                   
-                                </ul>
-                            </div>
-                            <!-- shop-sidebar end -->
-
-
-                           
-                            <!-- shop-sidebar end -->
-
-                            <!-- shop-sidebar start -->
-                            <div class="shop-sidebar mb-30">
-                                <h4 class="title">Color</h4>
-                                <ul id="color">
-                                    
-                                </ul>
-                            </div>
-                            <!-- shop-sidebar end -->
-
-                            <!-- shop-sidebar start -->
-                            <div class="shop-sidebar mb-30">
-                                <h4 class="title">SIZE</h4>
-                                <ul id="size">
-                                    
-                                </ul>
-                            </div>
-                            <!-- shop-sidebar end -->
-
-                        </div>
-                        <!-- shop-sidebar-wrap end -->
-                    </div>
-                    <div class="col-lg-9 order-lg-2 order-1">
-                        <!-- shop-product-wrapper start -->
-                        <div class="shop-product-wrapper">
                             <div class="row">
-                                <div class="col">
-                                    <!-- shop-top-bar start -->
-                                    <div class="shop-top-bar">
-                                        <!-- product-view-mode start -->
+                                <div class="col-md-8">
+                                    <div class="coupon-all">
 
-                                        <div class="product-mode">
-                                            <!--shop-item-filter-list-->
-                                            <ul class="nav shop-item-filter-list" role="tablist">
-                                                <li class="active"><a class="active" data-bs-toggle="tab" href="#grid"><i class="ion-ios-keypad-outline"></i></a></li>
-                                                <li><a data-bs-toggle="tab" href="#list"><i class="ion-ios-list-outline"></i></a></li>
-                                            </ul>
-                                            <!-- shop-item-filter-list end -->
+                                        <div class="coupon2">
+                                            <a href="shop.html" class="btn continue-btn">Continuar Comprando</a>
                                         </div>
 
-                                        <div class="product-mode">
-                                            <!--shop-item-filter-list-->
-                                            <ul class="nav  quitarFiltros" role="tablist">
-                                                <li><a data-bs-toggle="tab" id="removeAllFilter"><i class="ion-android-close"></i>Quitar Filtros</a></li>
-                                            </ul>
-                                            <!-- shop-item-filter-list end -->
-                                        </div>
-                                        <!-- product-view-mode end -->
-                                        <!-- product-short start -->
-                                        <div class="product-short">
-                                            <select class="nice-select" id="sortby">
-                                                <option value="5">Ordenar por:</option>
-                                                <option value="1">Nombre(A - Z)</option>
-                                                <option value="2">Nombre(Z - A)</option>
-                                                <option value="3">Precio(Mayor - Menor)</option>
-                                                <option value="4">Precio(Menor - Mayor)</option>
-                                            </select>
-                                        </div>
-                                        <!-- product-short end -->
-                                    </div>
-                                    <!-- shop-top-bar end -->
-                                </div>
-                            </div>
-
-                            <!-- shop-products-wrap start -->
-                            <div class="shop-products-wrap">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="grid">
-                                        <div class="shop-product-wrap">
-                                            <div class="row" id="productos">
-                                            </div>       
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="list">
-                                        <div class="shop-product-list-wrap" id="list-product">
-                                    
+                                        <div class="coupon">
+                                            <h3>Cupón</h3>
+                                            <p>Ingrese si tiene un cupón.</p>
+                                            <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
+                                            <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- shop-products-wrap end -->
-
-                            <!-- paginatoin-area start -->
-                            <div class="paginatoin-area">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12">
-                                        <ul class="pagination-box">
-                                            <li><a class="Previous" href="#"><i class="ion-chevron-left"></i></a>
-                                            </li>
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li>
-                                                <a class="Next" href="#"><i class="ion-chevron-right"></i> </a>
-                                            </li>
+                                <div class="col-md-4 ml-auto">
+                                    <div class="cart-page-total">
+                                        <h2>Cart totales</h2>
+                                        <ul>
+                                            <li>Subtotal <span id="subtotal">0</span></li>
+                                            <li>Total <span id="total">0</span></li>
                                         </ul>
+                                        <a href="#" class="proceed-checkout-btn">Proceed to checkout</a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- paginatoin-area end -->
-                        </div>
-                        <!-- shop-product-wrapper end -->
+                        </form>
                     </div>
                 </div>
             </div>
@@ -462,7 +358,7 @@
     <!-- JS
 ============================================ -->
     
-    <script src="shop.js"></script>
+    <script src="cart.js"></script>
     <!-- Modernizer JS -->
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
     <!-- jQuery JS -->

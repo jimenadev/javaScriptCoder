@@ -118,7 +118,7 @@ let filtrosProductos1;
 
 
 
-/*************Eventos************************* */
+/*************Eventos Productos************************* */
 
 
 window.addEventListener("load", cargarPagShop)
@@ -240,11 +240,7 @@ const loadCart = ()=>{
         
         actualizarMiniCart(cart1);
     }else{
-
-        console.log("innertext")
         document.getElementById("cart-total").innerText = 0
-
-
     }
 }
 
