@@ -12270,9 +12270,12 @@ ul.minicart-pricing-box li:last-child {
 
 .pot-small-img {
   border: 1px solid #ddd;
+  width: 5vw;
+  height: 5vh;
 }
 .pot-small-img img {
   width: 100%;
+  height: 100%;
 }
 
 .product_big_images-right {
@@ -12304,7 +12307,9 @@ ul.minicart-pricing-box li:last-child {
 
 .product_small_images-left {
   float: left;
-  width: 115px;
+  width: 7vw;
+  height: 20vh;
+
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .product_small_images-left {

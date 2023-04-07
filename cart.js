@@ -3,6 +3,7 @@
 let initCart = false
 let cart1 =[];
 let filtrosProductos1;
+let rutaImage = "./imagenes"
 
 
 
@@ -170,7 +171,7 @@ function loadTableCart(cart){
     arregloCart.forEach(({urlImage, precioUnitario, cantidad,total, producto, id}) => {
             
         cartHTML.innerHTML += `<tr>
-                                <td class="plantmore-product-thumbnail"><a href="#"><img src="${urlImage}" alt=""></a></td>
+                                <td class="plantmore-product-thumbnail"><a href="#"><img src="${rutaImage}${urlImage}" alt=""></a></td>
                                 <td class="plantmore-product-name"><a href="#">${producto}</a></td>
                                 <td class="plantmore-product-price"><span class="amount">$ ${precioUnitario}</span></td>
                                 <td class="plantmore-product-quantity">
@@ -207,7 +208,7 @@ const actualizarMiniCart = (cart) =>{
       
         miniCart += `<li class="cart-item">
                                     <div class="cart-image">
-                                        <a href="single-product.html"><img alt="" src="${element.urlImage}"></a>
+                                        <a href="single-product.html"><img alt="" src="${rutaImage}${element.urlImage}"></a>
                                     </div>
                                     <div class="cart-title">
                                         <a href="product-details.html">

@@ -16,107 +16,139 @@ const categorias = [{nombre:"Tops",
                     id:5},
                     ];
 
-const productos = [{id:1,
-                    nombre:"Blusa con botón con bolsillo delantero de manga enrollada con botón",
-                    id_categoria:1,
-                    precio:20000,
-                    descripcion:"djsahfha",
-                    color:["Amarillo"],
-                    size:["S","M","L"],
-                    Oferta:"",
-                    urlImage:"https://img.ltwebstatic.com/images3_pi/2021/08/24/1629769472764a9a227d70b3938add7257db27b012.webp"},
-                    {id:2,
-                    nombre:"Grunge Punk Camisetas de Mujer A rayas Casual",
-                    id_categoria:1,
-                    precio:15000,
-                    descripcion:"djsahfha",
-                    color:["Rojo"],
-                    size:["S","M","L"],
-                    Oferta:"",
-                    urlImage:"https://img.ltwebstatic.com/images3_pi/2023/03/07/167818465781da2a3ce767e91e0892e1a6c7633bb1.webp"},
-                    {id:3,
-                    nombre:"Pantalones ajustados PU de cintura alta",
-                    id_categoria:2,
-                    precio:17000,
-                    descripcion:"djsahfha",
-                    color:["Gris"],
-                    size:["S","M","L"],
-                    Oferta:"",
-                    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/09/01/1662027238a2ebc72869b152479832ef62517c3cb0.webp"},
-                    {id:4,
-                    nombre:"Falda floral de muslo con abertura",
-                    id_categoria:2,
-                    precio:7000,
-                    descripcion:"djsahfha",
-                    color:["Negro"],
-                    size:["S","M","L"],
-                    Oferta:"",
-                    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/05/17/1652757953e649513b7389fb38d17666f2dd5ea3cc.webp"},
-                    {id:5,
-                    nombre:"Vestido Plantas Bohemio",
-                    id_categoria:3,
-                    precio:9900,
-                    descripcion:"djsahfha",
-                    color:["Beige"],
-                    size:["S","M"],
-                    Oferta:"",
-                    urlImage:"https://img.ltwebstatic.com/images3_pi/2021/04/19/1618798645280c8b9819a024ccd406e9d9ab554803.webp"},
-                    {id:6,
-                    nombre:"Vestido con estampado de leopardo de manga obispo de muslo con abertura",
-                    id_categoria:3,
-                    precio:15290,
-                    descripcion:"djsahfha",
-                    color:"Celeste",
-                    size:["S","M","L","XL"],
-                    Oferta:"",
-                    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/10/10/166539641937eae9de145ae0330ec01ae10bd82698.webp"},
-                    {id:7,
-                    nombre:"Conjunto de pijama pantalones con blusa con estampado floral ribete en contraste de satén",
-                    id_categoria:4,
-                    precio:21000,
-                    descripcion:"djsahfha",
-                    color:["Celeste"],
-                    size:["S","M","L","XL"],
-                    Oferta:"",
-                    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/03/17/1647483778e1e9ef48b2f13054a10bb2693e8d1da7.webp"},
-                    {id:8,
-                    nombre:"Conjunto de pijama pantalones con blusa con estampado floral ribete en contraste de satén",
-                    id_categoria:4,
-                    precio:13000,
-                    descripcion:"djsahfha",
-                    color:["Celeste"],
-                    size:["S","M","L","XL"],
-                    Oferta:"",
-                    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/03/17/1647483778e1e9ef48b2f13054a10bb2693e8d1da7.webp"},
-        
-                    {id:9,
-                    nombre:"Leggings deportivos bolsillo de celular de cintura ancha",
-                    id_categoria:5,
-                    precio:13290,
-                    descripcion:"djsahfha",
-                    color:["Negro"],
-                    size:["M","L","XL"],
-                    Oferta:"",
-                    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/07/07/1657158565f46339e5d9bf19283daaa9850e914dba.webp"},
-                    {id:10,
-                    nombre:"Leggings deportivos de tie dye con estiramiento alto",
-                    id_categoria:5,
-                    precio:9890,
-                    descripcion:"djsahfha",
-                    color:["Rosado"],
-                    size:["S","L","XL"],
-                    Oferta:"",
-                    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/10/18/1666078857b3d9e23210f27eb85cc1cef4d612ff77.webp"},
-        
-                ];
-
+                    const productos = [{id:1,
+                        nombre:"Blusa con botón con bolsillo delantero de manga enrollada con botón",
+                        id_categoria:1,
+                        precio:20000,
+                        descripcion:"djsahfha",
+                        color:["Amarillo"],
+                        size:["S","M","L"],
+                        Oferta:"",
+                        urlImage:"/producto1/1.webp"},
+                        {id:2,
+                        nombre:"Grunge Punk Camisetas de Mujer A rayas Casual",
+                        id_categoria:1,
+                        precio:15000,
+                        descripcion:"djsahfha",
+                        color:["Rojo"],
+                        size:["S","M","L"],
+                        Oferta:"",
+                        urlImage:"/producto2/1.webp"},
+                        {id:3,
+                        nombre:"Pantalones ajustados PU de cintura alta",
+                        id_categoria:2,
+                        precio:17000,
+                        descripcion:"djsahfha",
+                        color:["Gris"],
+                        size:["S","M","L"],
+                        Oferta:"",
+                        urlImage:"/producto3/1.webp"},
+                        {id:4,
+                        nombre:"Falda floral de muslo con abertura",
+                        id_categoria:2,
+                        precio:7000,
+                        descripcion:"djsahfha",
+                        color:["Negro"],
+                        size:["S","M","L"],
+                        Oferta:"",
+                        urlImage:"/producto4/4.webp"},
+                        {id:5,
+                        nombre:"Vestido Plantas Bohemio",
+                        id_categoria:3,
+                        precio:9900,
+                        descripcion:"djsahfha",
+                        color:["Beige"],
+                        size:["S","M"],
+                        Oferta:"",
+                        urlImage:"/producto5/1.webp"},
+                        {id:6,
+                        nombre:"Vestido con estampado de leopardo de manga obispo de muslo con abertura",
+                        id_categoria:3,
+                        precio:15290,
+                        descripcion:"djsahfha",
+                        color:"Celeste",
+                        size:["S","M","L","XL"],
+                        Oferta:"",
+                        urlImage:"/producto6/1.webp"},
+                        {id:7,
+                        nombre:"Conjunto de pijama pantalones con blusa con estampado floral ribete en contraste de satén",
+                        id_categoria:4,
+                        precio:21000,
+                        descripcion:"djsahfha",
+                        color:["Celeste"],
+                        size:["S","M","L","XL"],
+                        Oferta:"",
+                        urlImage:"/producto7/1.webp"},
+                        {id:8,
+                        nombre:"Pijama con estampado floral ribete en contraste Pantalones con blusa Conjunto de pijama",
+                        id_categoria:4,
+                        precio:18690,
+                        descripcion:"djsahfha",
+                        color:["Verde"],
+                        size:["S","M","L","XL"],
+                        Oferta:"",
+                        urlImage:"/producto8/1.webp"},
+                        {id:9,
+                        nombre:"Leggings deportivos bolsillo de celular de cintura ancha",
+                        id_categoria:5,
+                        precio:13290,
+                        descripcion:"djsahfha",
+                        color:["Negro"],
+                        size:["M","L","XL"],
+                        Oferta:"",
+                        urlImage:"/producto9/1.webp"},
+                        {id:10,
+                        nombre:"Leggings deportivos de tie dye con estiramiento alto",
+                        id_categoria:5,
+                        precio:9890,
+                        descripcion:"djsahfha",
+                        color:["Rosado"],
+                        size:["S","L","XL"],
+                        Oferta:"",
+                        urlImage:"/producto10/1.webp"}
+                    ];
 const imagenesProduct = [
     {
         id:1,
-        imagenes:["https://img.ltwebstatic.com/images3_pi/2021/08/24/1629769472764a9a227d70b3938add7257db27b012.webp",
-        "https://img.ltwebstatic.com/images3_pi/2021/08/24/1629769472764a9a227d70b3938add7257db27b012.webp",
-        "https://img.ltwebstatic.com/images3_pi/2021/08/24/1629769472764a9a227d70b3938add7257db27b012.webp"]
-    }
+        imagenes:["/producto1/1.webp","/producto1/2.webp","/producto1/3.webp", "/producto1/4.webp", "/producto1/5.webp"]
+    },
+    {
+        id:2,
+        imagenes:["/producto2/1.webp","/producto2/2.webp","/producto2/3.webp", "/producto2/4.webp", "/producto2/5.webp"]
+    },
+    {
+        id:3,
+        imagenes:["/producto3/1.webp","/producto3/2.webp","/producto3/3.webp", "/producto3/4.webp", "/producto3/5.webp"]
+    },
+    {
+        id:4,
+        imagenes:["/producto4/1.webp","/producto4/2.webp","/producto4/3.webp", "/producto4/4.webp", "/producto4/5.webp"]
+    },
+    {
+        id:5,
+        imagenes:["/producto5/1.webp","/producto5/2.webp","/producto5/3.webp", "/producto5/4.webp", "/producto5/5.webp"]
+    },
+    {
+        id:6,
+        imagenes:["/producto6/1.webp","/producto6/2.webp","/producto6/3.webp", "/producto6/4.webp", "/producto6/5.webp"]
+    },
+    {
+        id:7,
+        imagenes:["/producto7/1.webp","/producto7/2.webp","/producto7/3.webp", "/producto7/4.webp", "/producto7/5.webp"]
+    },
+    {
+        id:8,
+        imagenes:["/producto8/1.webp","/producto8/2.webp","/producto8/3.webp", "/producto8/4.webp", "/producto8/5.webp"]
+    },
+    {
+        id:9,
+        imagenes:["/producto9/1.webp","/producto9/2.webp","/producto9/3.webp", "/producto9/4.webp", "/producto9/5.webp"]
+    },
+    {
+        id:10,
+        imagenes:["/producto10/1.webp","/producto10/2.webp","/producto10/3.webp", "/producto10/4.webp", "/producto10/5.webp"]
+    },
+    
 ]
                 
 
@@ -127,6 +159,7 @@ let cart1;
 let filtrosProductos1;
 let wishlist1;
 let idProducto
+let rutaImage = "./imagenes"
 
 
 
@@ -574,15 +607,16 @@ function loadProductDetails(producto){
     let i=0
     let productoDetailsImgSmallHTML = document.getElementById("img-small")        
     image.forEach(item => {
-        console.log(item)
         i++
         let productoDetailsImgHTML = document.getElementById(`img-tab-${i}`)
             
-        productoDetailsImgHTML.innerHTML = `<a href="${item}" class="img-poppu">
-                                            <img src="${item}" alt="#">
+        productoDetailsImgHTML.innerHTML = `<a href="${rutaImage}${item}" class="img-poppu">
+                                            <img src="${rutaImage}${item}" alt="#">
                                         </a>`
                                                                
-        productoDetailsImgSmallHTML.innerHTML += `<li class="pot-small-img" id="${i}"><img src="${item}" alt="#"></li>`                                           
+        let productoDetailsImgSmallHTML = document.getElementById(`img-small-${i}`)
+
+        productoDetailsImgSmallHTML.src  = `${rutaImage}${item}`                                           
 
     });
 

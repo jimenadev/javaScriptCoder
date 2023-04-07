@@ -7,7 +7,7 @@ const productos = [{id:1,
     color:["Amarillo"],
     size:["S","M","L"],
     Oferta:"",
-    urlImage:"https://img.ltwebstatic.com/images3_pi/2021/08/24/1629769472764a9a227d70b3938add7257db27b012.webp"},
+    urlImage:"/producto1/1.webp"},
     {id:2,
     nombre:"Grunge Punk Camisetas de Mujer A rayas Casual",
     id_categoria:1,
@@ -16,7 +16,7 @@ const productos = [{id:1,
     color:["Rojo"],
     size:["S","M","L"],
     Oferta:"",
-    urlImage:"https://img.ltwebstatic.com/images3_pi/2023/03/07/167818465781da2a3ce767e91e0892e1a6c7633bb1.webp"},
+    urlImage:"/producto2/1.webp"},
     {id:3,
     nombre:"Pantalones ajustados PU de cintura alta",
     id_categoria:2,
@@ -25,7 +25,7 @@ const productos = [{id:1,
     color:["Gris"],
     size:["S","M","L"],
     Oferta:"",
-    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/09/01/1662027238a2ebc72869b152479832ef62517c3cb0.webp"},
+    urlImage:"/producto3/1.webp"},
     {id:4,
     nombre:"Falda floral de muslo con abertura",
     id_categoria:2,
@@ -34,7 +34,7 @@ const productos = [{id:1,
     color:["Negro"],
     size:["S","M","L"],
     Oferta:"",
-    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/05/17/1652757953e649513b7389fb38d17666f2dd5ea3cc.webp"},
+    urlImage:"/producto4/4.webp"},
     {id:5,
     nombre:"Vestido Plantas Bohemio",
     id_categoria:3,
@@ -43,7 +43,7 @@ const productos = [{id:1,
     color:["Beige"],
     size:["S","M"],
     Oferta:"",
-    urlImage:"https://img.ltwebstatic.com/images3_pi/2021/04/19/1618798645280c8b9819a024ccd406e9d9ab554803.webp"},
+    urlImage:"/producto5/1.webp"},
     {id:6,
     nombre:"Vestido con estampado de leopardo de manga obispo de muslo con abertura",
     id_categoria:3,
@@ -52,7 +52,7 @@ const productos = [{id:1,
     color:"Celeste",
     size:["S","M","L","XL"],
     Oferta:"",
-    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/10/10/166539641937eae9de145ae0330ec01ae10bd82698.webp"},
+    urlImage:"/producto6/1.webp"},
     {id:7,
     nombre:"Conjunto de pijama pantalones con blusa con estampado floral ribete en contraste de satén",
     id_categoria:4,
@@ -61,17 +61,16 @@ const productos = [{id:1,
     color:["Celeste"],
     size:["S","M","L","XL"],
     Oferta:"",
-    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/03/17/1647483778e1e9ef48b2f13054a10bb2693e8d1da7.webp"},
+    urlImage:"/producto7/1.webp"},
     {id:8,
-    nombre:"Conjunto de pijama pantalones con blusa con estampado floral ribete en contraste de satén",
+    nombre:"Pijama con estampado floral ribete en contraste Pantalones con blusa Conjunto de pijama",
     id_categoria:4,
-    precio:13000,
+    precio:18690,
     descripcion:"djsahfha",
-    color:["Celeste"],
+    color:["Verde"],
     size:["S","M","L","XL"],
     Oferta:"",
-    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/03/17/1647483778e1e9ef48b2f13054a10bb2693e8d1da7.webp"},
-
+    urlImage:"/producto8/1.webp"},
     {id:9,
     nombre:"Leggings deportivos bolsillo de celular de cintura ancha",
     id_categoria:5,
@@ -80,7 +79,7 @@ const productos = [{id:1,
     color:["Negro"],
     size:["M","L","XL"],
     Oferta:"",
-    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/07/07/1657158565f46339e5d9bf19283daaa9850e914dba.webp"},
+    urlImage:"/producto9/1.webp"},
     {id:10,
     nombre:"Leggings deportivos de tie dye con estiramiento alto",
     id_categoria:5,
@@ -89,11 +88,10 @@ const productos = [{id:1,
     color:["Rosado"],
     size:["S","L","XL"],
     Oferta:"",
-    urlImage:"https://img.ltwebstatic.com/images3_pi/2022/10/18/1666078857b3d9e23210f27eb85cc1cef4d612ff77.webp"},
-
+    urlImage:"/producto10/1.webp"}
 ];
 
-
+let rutaImage = "./imagenes"
 let initCart = false
 let cart1 =[]
 let wishlist1=[]
@@ -347,7 +345,7 @@ function loadTableWishlist(wishlist){
     arregloWishlist1.forEach(({urlImage, precioUnitario, producto, id}) => {
             
         wishlistHTML.innerHTML += ` <tr>
-                                        <td class="plantmore-product-thumbnail"><a href="#"><img src="${urlImage}" alt=""></a></td>
+                                        <td class="plantmore-product-thumbnail"><a href="#"><img src="${rutaImage}${urlImage}" alt=""></a></td>
                                         <td class="plantmore-product-name"><a href="#">${producto}</a></td>
                                         <td class="plantmore-product-price"><span class="amount">$ ${precioUnitario}</span></td>
                                         <td class="plantmore-product-stock-status"><span class="in-stock">in stock</span></td>
@@ -377,7 +375,7 @@ const actualizarMiniCart = (cart) =>{
       
         miniCart += `<li class="cart-item">
                                     <div class="cart-image">
-                                        <a href="single-product.html"><img alt="" src="${element.urlImage}"></a>
+                                        <a href="single-product.html"><img alt="" src="${rutaImage}${element.urlImage}"></a>
                                     </div>
                                     <div class="cart-title">
                                         <a href="product-details.html">
