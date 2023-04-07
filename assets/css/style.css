@@ -13646,6 +13646,12 @@ ul.minicart-pricing-box li:last-child {
   text-align: center;
   width: 5vw;
 }
+
+@media only screen and (max-width: 991px) {
+  .shop-sidebar-wrap {
+    width: 10vw;
+  }
+}
 .filter-price-cont .input-type:last-child {
   padding-left: 8px;
 }
