@@ -8796,8 +8796,10 @@ img.mfp-img {
 ------------------------------------------*/
 .breadcrumb-area {
   background: url("../images/bg/breadcrumb-bg.png") no-repeat;
+  background-position: center;
   text-align: center;
   height: 45vh;
+  margin: 0 1vw;
 }
 .breadcrumb-area h2 {
   font-size: 30px;
