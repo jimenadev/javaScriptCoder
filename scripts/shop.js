@@ -402,6 +402,17 @@ function cart(init) {
                     this.totalProduct();
               }
         },
+        updateCantidadProduct: function(id, cantidad){
+            let item = this.items.find((item) => item.id===id)
+            let index = this.items.indexOf(item)
+            if (index > -1) {
+                item.cantidad = cantidad
+                item.total = item.precioUnitario * item.cantidad
+                this.items[index] = item
+                this.sumPrecio();
+                this.totalProduct();
+            }
+        },
         getList: function() {
             return this.items
         },
