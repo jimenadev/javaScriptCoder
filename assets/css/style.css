@@ -13255,8 +13255,9 @@ ul.minicart-pricing-box li:last-child {
     10. Footer Css
 -------------------------*/
 .footer-top {
-  background: #f6f6f6;
-  margin-left: 20px;
+  background: #a3a3a3;
+  margin-left: 5vw;
+  margin-right: 5vw;
   
 }
 
