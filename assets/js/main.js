@@ -405,7 +405,7 @@ $('.vartical-product-active').each(function(){
     var $details = $this.siblings('.product-details-images-2');
     $this.slick({
         arrows: true,
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: false,
         autoplaySpeed: 5000,
