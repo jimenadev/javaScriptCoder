@@ -13649,7 +13649,7 @@ ul.minicart-pricing-box li:last-child {
 }
 
 @media only screen and (max-width: 991px) {
-  .shop-sidebar-wrap {
+  .filter-price-cont .input-type input {
     width: 10vw;
   }
 }
