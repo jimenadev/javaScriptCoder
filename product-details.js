@@ -1,4 +1,3 @@
-
 /*************Variables************************* */
 
 
@@ -111,121 +110,76 @@ const productos = [{id:1,
         
                 ];
 
+const imagenesProduct = [
+    {
+        id:1,
+        imagenes:["https://img.ltwebstatic.com/images3_pi/2021/08/24/1629769472764a9a227d70b3938add7257db27b012.webp",
+        "https://img.ltwebstatic.com/images3_pi/2021/08/24/1629769472764a9a227d70b3938add7257db27b012.webp",
+        "https://img.ltwebstatic.com/images3_pi/2021/08/24/1629769472764a9a227d70b3938add7257db27b012.webp"]
+    }
+]
+                
+
 
 let initCart = false
 let initWishlist=false
 let cart1;
 let filtrosProductos1;
 let wishlist1;
+let idProducto
 
 
 
-/*************Eventos Productos************************* */
+/*************Eventos Details Productos************************* */
 
+window.addEventListener("load", cargarPagProductDetails)
 
-window.addEventListener("load", cargarPagShop)
+let comprar = document.getElementById("addToCart")
+comprar.addEventListener("click",addCart )
 
-let searchInput = document.getElementById("search")
-searchInput.addEventListener("keyup", buscarProductos)
-
-let removeFilter = document.getElementById("removeAllFilter")
-removeFilter.addEventListener("click", removeAllFilter)
-
-let filtrarPorPrecioButton = document.getElementById("filtrarPorPrecio")
-filtrarPorPrecioButton.addEventListener("click", updatePrice )
-
-let sortbySelect = document.getElementById("sortby")
-sortbySelect.addEventListener("change", ordenarProductos )
+let wish = document.getElementById("addToWishlist")
+wish.addEventListener("click",addWishlist )
 
 
 
-/*************Métodos Productos************************* */
 
-function cargarPagShop(e){
+/*************Métodos details product************************* */
+
+function cargarPagProductDetails(e){
     filtrosProductos1 = filtrosProductos()
     filtrosProductos1.add(productos)
-    loadProductos(filtrosProductos1.getList())
-    loadListProduct(filtrosProductos1.getList())
-    loadCategorias(categorias)
-    loadColor(color)
-    loadSize(size)
     loadCart()
     loadWishlist()
+    idProducto = getProducto()
+    filtrosProductos1.searchId(idProducto)
+    console.log(filtrosProductos1.getListSearch())
+    loadProductDetails(filtrosProductos1.getListSearch())
+   
 }
 
-function buscarProductos(e){
-    let searchText = document.getElementById("search").value
-    filtrosProductos1.search(searchText)
-    loadProductos(filtrosProductos1.getListSearch())
-    loadListProduct(filtrosProductos1.getListSearch())
+function getImagenes(id){
+    return imagenesProduct.filter((item) => item.id==id)
 }
 
-function removeAllFilter(){
-    loadProductos(filtrosProductos1.getList())
-    loadListProduct(filtrosProductos1.getList())
-}
+const getProducto = () =>{
+    let valores = window.location.search;
+    let urlParams = new URLSearchParams(valores);
+    let id_producto = parseInt(urlParams.get('id'));
 
-function filtrarPorCategoria(idCategoria){
- 
-    loadProductos(filtrosProductos1.getListSearch())
-    loadListProduct(filtrosProductos1.getListSearch())
-}
+    return id_producto
 
-function filtrarPorColor(color){
-    filtrosProductos1.filtrarPorColor(color)
-    loadProductos(filtrosProductos1.getListSearch())
-    loadListProduct(filtrosProductos1.getListSearch())
 }
 
 
-function filtrarPorSize(size){
-    filtrosProductos1.filtrarPorSize(size)
-    loadProductos(filtrosProductos1.getListSearch())
-    loadListProduct(filtrosProductos1.getListSearch())
+
+function  addCart(){
+    let cantidad = document.getElementById("cantidadProducto").value
+    addToCart(idProducto, parseInt(cantidad))
 }
 
-function updatePrice(e){
-
-    let minPrice = document.getElementById("min-price").value
-    let maxPrice = document.getElementById("max-price").value
-
-    minPrice = minPrice.replace('$', '')
-    maxPrice = maxPrice.replace('$', '')
-
-    minPrice = parseInt(minPrice)
-    maxPrice = parseInt(maxPrice)
-    filtrosProductos1.filtrarPorPrecio(minPrice, maxPrice)
-    loadProductos(filtrosProductos1.getListSearch())
-    loadListProduct(filtrosProductos1.getListSearch())
-
+function  addWishlist(){
+    addToWishlist(idProducto)
 }
-
-function ordenarProductos(e){
-    e.preventDefault();
-    let select = e.target
-    let opcionSeleccionadaOrder = select.options[sortbySelect.selectedIndex].value
-
-    switch(opcionSeleccionadaOrder){
-        case "1":
-            filtrosProductos1.sortNombre(1)
-            break;
-        case "2":
-            filtrosProductos1.sortNombre(2)
-            break;
-        case "3":
-            filtrosProductos1.sortPrice(1)
-        case "4": 
-            filtrosProductos1.sortPrice(2)
-            break;
-        case "5":
-            return removeAllFilter()
-    }
-
-    loadProductos(filtrosProductos1.getListSearch())
-    loadListProduct(filtrosProductos1.getListSearch())
-}
-
-
 
 /***************Metodos Cart*********************************** */
 
@@ -261,7 +215,7 @@ function addToCart(id_producto, cantidad=1){
     let prodSelec = productos.find((p) => p.id===id_producto)
     
     if(cart1.search(id_producto)){
-        incrementar(id_producto)
+        incrementar(id_producto, cantidad)
     }else{
         cart1.add({id:id_producto,producto:prodSelec.nombre, cantidad:cantidad, precioUnitario: prodSelec.precio,total:(prodSelec.precio*cantidad), urlImage:prodSelec.urlImage})
     }
@@ -271,6 +225,7 @@ function addToCart(id_producto, cantidad=1){
 }
 
 const eliminar = (id) =>{
+    console.log(id)
     cart1.remove(id)
     actualizarMiniCart(cart1)
 }
@@ -350,7 +305,9 @@ const getWishlistLocalStorage = () =>{
 }
 
 
-/*************Objetos Cart, Productos, Wishlist ************************* */
+
+
+/*************Objetos Cart y Wishlist************************* */
 
 function cart(init) {
     return {
@@ -369,6 +326,7 @@ function cart(init) {
         },
         remove: function(id) {
             let item = this.items.find((item) => item.id===id)
+        
             if (this.items.includes(item)) {
                 let index = this.items.indexOf(item)
                 if (index > -1) {
@@ -382,6 +340,7 @@ function cart(init) {
         },
         incrementarProduct:function(id, cantidad){
             let item = this.items.find((item) => item.id===id)
+            console.log(item)
             
             let index = this.items.indexOf(item)
               if (index > -1) {
@@ -404,6 +363,17 @@ function cart(init) {
                     this.totalProduct();
               }
         },
+        updateCantidadProduct: function(id, cantidad){
+            let item = this.items.find((item) => item.id===id)
+            let index = this.items.indexOf(item)
+            if (index > -1) {
+                item.cantidad = cantidad
+                item.total = item.precioUnitario * item.cantidad
+                this.items[index] = item
+                this.sumPrecio();
+                this.totalProduct();
+            }
+        },
         getList: function() {
             return this.items
         },
@@ -423,7 +393,6 @@ function cart(init) {
     }
   
   }
-
 
   function filtrosProductos() {
     return {
@@ -450,7 +419,10 @@ function cart(init) {
             });
 
             this.itemsSearch = newProducts
-          
+        },
+        searchId: function(id){
+            let newProducts = this.items.filter((item) => item.id==id)
+            this.itemsSearch = newProducts
         },
         getList: function() {
             return this.items
@@ -549,12 +521,15 @@ function cart(init) {
                 }
             }
             this.orderNombre=order
-        }
-    
+        },
       
     }
 
   }
+
+
+
+
 
 function wishlist(init) {
     return {
@@ -586,96 +561,41 @@ function wishlist(init) {
 
 
 
-  /*************Renderizar Productos***********/
-function loadProductos(arreglo){
+  /*************Renderizar wishlist***********/
+function loadProductDetails(producto){
+    console.log("entro")    
 
-    document.getElementById("productos").innerHTML = ""
+    const {urlImage,id,nombre,precio} = producto[0] 
 
-    let productosHTML = document.getElementById("productos")
+    let imagenes = getImagenes(id)
+    console.log(imagenes)
+    let image = imagenes[0].imagenes
 
-    arreglo.forEach(({urlImage,id,nombre,precio}) => {
+    let i=0
+    let productoDetailsImgSmallHTML = document.getElementById("img-small")        
+    image.forEach(item => {
+        console.log(item)
+        i++
+        let productoDetailsImgHTML = document.getElementById(`img-tab-${i}`)
             
-        productosHTML.innerHTML += `<div class="col-lg-4 col-md-4 col-sm-6">
-                                    <input type="hidden" value="producto_${id}" class="id_producto">
-                            <div class="single-product-wrap">
-                                <div class="product-image">
-                                    <a href="product-details.html?id=${id}"><img src="${urlImage}" alt="Produce Images"></a>
-                                    <span class="label">20% Off</span>
-                                    <div class="product-action">
-                                        <a class="add-to-cart" onclick="addToCart(${id})" ><i class="ion-bag"></i></a>
-                                        <a  class="wishlist" onclick="addToWishlist(${id})"><i class="ion-android-favorite-outline"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3><a href="product-details.html?id=${id}">${nombre}</a></h3>
-                                    <div class="price-box">
-                                        <span class="old-price">${precio}</span>
-                                        <span class="new-price">${precio}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`
+        productoDetailsImgHTML.innerHTML = `<a href="${item}" class="img-poppu">
+                                            <img src="${item}" alt="#">
+                                        </a>`
+                                                               
+        productoDetailsImgSmallHTML.innerHTML += `<li class="pot-small-img" id="${i}"><img src="${item}" alt="#"></li>`                                           
 
     });
+
+    document.getElementById("nombre").innerText = nombre
+    document.getElementById("precio").innerText = precio 
+
+
+  
 }
 
-function loadListProduct(arreglo){
-    document.getElementById("list-product").innerHTML = ""
 
-    let productosHTML = document.getElementById("list-product")
 
-    arreglo.forEach(({urlImage,id,nombre,precio}) => {
-            
-        productosHTML.innerHTML += ` <div class="row product-layout-list">
-                    <div class="col-lg-4 col-md-5">
-                        <div class="single-product-wrap">
-                            <div class="product-image">
-                                <a href="product-details.html?id=${id}"><img src="${urlImage}" alt="Produce Images"></a>
-                                <span class="label">30% Off</span>
-                                <div class="product-action">
-                                    <a  class="add-to-cart"  onclick="addToCart(${id})"><i class="ion-bag"></i></a>
-                                    <a  class="wishlist" onclick="addToWishlist(${id})"><i class="ion-android-favorite-outline"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-7">
-                        <div class="product-content text-start">
-                            <h3><a href="product-details.html?id=${id}">${nombre}</a></h3>
-                            <div class="price-box">
-                                <span class="old-price">${precio}</span>
-                                <span class="new-price">${precio}</span>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis pariatur ipsa sint consectetur velit maiores sit voluptates aut tempora totam, consequatur iste quod suscipit natus. Explicabo facere neque adipisci odio.</p>
-                        </div>
-                    </div>
-                </div>`
-    })
-}
 
-function loadCategorias(arreglo){
-    let categoriasHTML = document.getElementById("categorias")
-
-    arreglo.forEach(element => {
-        categoriasHTML.innerHTML += `<li><a class="filtros" onclick="filtrarPorCategoria(${element.id})">${element.nombre}</li>`
-    });
-}
-
-function loadColor(arreglo){
-    let categoriasHTML = document.getElementById("color")
-
-    arreglo.forEach(element => {
-        categoriasHTML.innerHTML += ` <li><a class="filtros"  onclick="filtrarPorColor('${element}')">${element}</li>`
-    });
-}
-
-function loadSize(arreglo){
-    let categoriasHTML = document.getElementById("size")
-
-    arreglo.forEach(element => {
-        categoriasHTML.innerHTML += `<li><a class="filtros"   onclick="filtrarPorSize('${element}')">${element}</li>`
-    });
-}
 
 
 

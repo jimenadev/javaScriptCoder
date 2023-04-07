@@ -12545,6 +12545,12 @@ ul.minicart-pricing-box li:last-child {
   text-align: center;
   width: 40px;
 }
+
+ #addToWishlist:hover{
+  background: #ff5151;
+  color: #ffffff;
+  border: 1px solid #ff5151;
+}
 .pro_dtl_btn li a.buy_now_btn {
   text-transform: uppercase;
   font-weight: 500;

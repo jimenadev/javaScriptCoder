@@ -151,7 +151,7 @@ const loadCart = ()=>{
     
 }
 
-function addToCart(id_producto){
+function addToCart(id_producto, cantidad=1){
     if(!initCart){
         cart1 = cart(1)
         initCart=true
@@ -162,7 +162,7 @@ function addToCart(id_producto){
     if(cart1.search(id_producto)){
         incrementar(id_producto)
     }else{
-        cart1.add({id:id_producto,producto:prodSelec.nombre, cantidad:1, precioUnitario: prodSelec.precio,total:prodSelec.precio, urlImage:prodSelec.urlImage})
+        cart1.add({id:id_producto,producto:prodSelec.nombre, cantidad:cantidad, precioUnitario: prodSelec.precio,total:(prodSelec.precio*cantidad), urlImage:prodSelec.urlImage})
     }
 
     actualizarMiniCart(cart1);
