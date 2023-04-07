@@ -4,6 +4,7 @@
 
 const color = ["Negro","Blanco","Rojo", "Verde", "Amarillo", "Azul", "Naranjo", "Beige", "Cafe", "Morado", "Gris", "Rosado", "Celeste"]
 const size = ["S", "M", "L", "XL", "XXL"]
+const ofertas = ["Con Ofertas", "Sin Ofertas"]
 
 const categorias = [{nombre:"Tops",
                     id:1},
@@ -17,95 +18,95 @@ const categorias = [{nombre:"Tops",
                     id:5},
                     ];
 
-                    const productos = [{id:1,
+    const productos = [{id:1,
                         nombre:"Blusa con botón con bolsillo delantero de manga enrollada con botón",
                         id_categoria:1,
-                        precio:20000,
+                        precio:18200,
                         descripcion:"djsahfha",
                         color:["Amarillo"],
                         size:["S","M","L"],
-                        Oferta:"",
+                        oferta:{oferta:true,precio_old:26000, porcentaje:30},
                         urlImage:"/producto1/1.webp"},
                         {id:2,
                         nombre:"Grunge Punk Camisetas de Mujer A rayas Casual",
                         id_categoria:1,
-                        precio:15000,
+                        precio:13650,
                         descripcion:"djsahfha",
                         color:["Rojo"],
                         size:["S","M","L"],
-                        Oferta:"",
+                        oferta:{oferta:true,precio_old:19500, porcentaje:30},
                         urlImage:"/producto2/1.webp"},
                         {id:3,
                         nombre:"Pantalones ajustados PU de cintura alta",
                         id_categoria:2,
-                        precio:17000,
+                        precio:13600,
                         descripcion:"djsahfha",
                         color:["Gris"],
                         size:["S","M","L"],
-                        Oferta:"",
+                        oferta:{oferta:false,precio_old:17000, porcentaje:20},
                         urlImage:"/producto3/1.webp"},
                         {id:4,
                         nombre:"Falda floral de muslo con abertura",
                         id_categoria:2,
-                        precio:7000,
+                        precio:8000,
                         descripcion:"djsahfha",
                         color:["Negro"],
                         size:["S","M","L"],
-                        Oferta:"",
+                        oferta:{oferta:true,precio_old:10000, porcentaje:20},
                         urlImage:"/producto4/4.webp"},
                         {id:5,
                         nombre:"Vestido Plantas Bohemio",
                         id_categoria:3,
-                        precio:9900,
+                        precio:12750,
                         descripcion:"djsahfha",
                         color:["Beige"],
                         size:["S","M"],
-                        Oferta:"",
+                        oferta:{oferta:true,precio_old:15000, porcentaje:15},
                         urlImage:"/producto5/1.webp"},
                         {id:6,
                         nombre:"Vestido con estampado de leopardo de manga obispo de muslo con abertura",
                         id_categoria:3,
-                        precio:15290,
+                        precio:11050,
                         descripcion:"djsahfha",
                         color:"Celeste",
                         size:["S","M","L","XL"],
-                        Oferta:"",
+                        oferta:{oferta:true,precio_old:13000, porcentaje:15},
                         urlImage:"/producto6/1.webp"},
                         {id:7,
                         nombre:"Conjunto de pijama pantalones con blusa con estampado floral ribete en contraste de satén",
                         id_categoria:4,
-                        precio:21000,
+                        precio:12600,
                         descripcion:"djsahfha",
                         color:["Celeste"],
                         size:["S","M","L","XL"],
-                        Oferta:"",
+                        oferta:{oferta:true,precio_old:21000, porcentaje:40},
                         urlImage:"/producto7/1.webp"},
                         {id:8,
                         nombre:"Pijama con estampado floral ribete en contraste Pantalones con blusa Conjunto de pijama",
                         id_categoria:4,
-                        precio:18690,
+                        precio:15000,
                         descripcion:"djsahfha",
                         color:["Verde"],
                         size:["S","M","L","XL"],
-                        Oferta:"",
+                        oferta:{oferta:false,precio_old:25000, porcentaje:40},
                         urlImage:"/producto8/1.webp"},
                         {id:9,
                         nombre:"Leggings deportivos bolsillo de celular de cintura ancha",
                         id_categoria:5,
-                        precio:13290,
+                        precio:15000,
                         descripcion:"djsahfha",
                         color:["Negro"],
                         size:["M","L","XL"],
-                        Oferta:"",
+                        oferta:{oferta:true,precio_old:30000, porcentaje:50},
                         urlImage:"/producto9/1.webp"},
                         {id:10,
                         nombre:"Leggings deportivos de tie dye con estiramiento alto",
                         id_categoria:5,
-                        precio:9890,
+                        precio:17500,
                         descripcion:"djsahfha",
                         color:["Rosado"],
                         size:["S","L","XL"],
-                        Oferta:"",
+                        oferta:{oferta:true,precio_old:35000, porcentaje:50},
                         urlImage:"/producto10/1.webp"}
                     ];
 
@@ -602,28 +603,51 @@ function loadProductos(arreglo){
 
     let productosHTML = document.getElementById("productos")
 
-    arreglo.forEach(({urlImage,id,nombre,precio}) => {
-            
-        productosHTML.innerHTML += `<div class="col-lg-4 col-md-4 col-sm-6">
+    arreglo.forEach(({urlImage,id,nombre,precio, oferta}) => {
+
+        if(oferta.oferta){
+            productosHTML.innerHTML += `<div class="col-lg-4 col-md-4 col-sm-6">
                                     <input type="hidden" value="producto_${id}" class="id_producto">
-                            <div class="single-product-wrap">
-                                <div class="product-image">
-                                    <a href="product-details.html?id=${id}"><img src="${rutaImage}${urlImage}" alt="Produce Images"></a>
-                                    <span class="label">20% Off</span>
-                                    <div class="product-action">
-                                        <a class="add-to-cart" onclick="addToCart(${id})" ><i class="ion-bag"></i></a>
-                                        <a  class="wishlist" onclick="addToWishlist(${id})"><i class="ion-android-favorite-outline"></i></a>
+                                    <div class="single-product-wrap">
+                                        <div class="product-image">
+                                            <a href="product-details.html?id=${id}"><img src="${rutaImage}${urlImage}" alt="Produce Images"></a>
+                                            <span class="label">${oferta.porcentaje} Off</span>
+                                            <div class="product-action">
+                                                <a class="add-to-cart" onclick="addToCart(${id})" ><i class="ion-bag"></i></a>
+                                                <a  class="wishlist" onclick="addToWishlist(${id})"><i class="ion-android-favorite-outline"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h3><a href="product-details.html?id=${id}">${nombre}</a></h3>
+                                            <div class="price-box">
+                                                <span class="old-price">${oferta.precio_old}</span>
+                                                <span class="new-price">${precio}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3><a href="product-details.html?id=${id}">${nombre}</a></h3>
-                                    <div class="price-box">
-                                        <span class="old-price">${precio}</span>
-                                        <span class="new-price">${precio}</span>
+                                </div>`
+        }else{
+            productosHTML.innerHTML += `<div class="col-lg-4 col-md-4 col-sm-6">
+                                    <input type="hidden" value="producto_${id}" class="id_producto">
+                                    <div class="single-product-wrap">
+                                        <div class="product-image">
+                                            <a href="product-details.html?id=${id}"><img src="${rutaImage}${urlImage}" alt="Produce Images"></a>
+                                            <div class="product-action">
+                                                <a class="add-to-cart" onclick="addToCart(${id})" ><i class="ion-bag"></i></a>
+                                                <a  class="wishlist" onclick="addToWishlist(${id})"><i class="ion-android-favorite-outline"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h3><a href="product-details.html?id=${id}">${nombre}</a></h3>
+                                            <div class="price-box">
+                                                <span class="new-price">${precio}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>`
+                                </div>`
+        }
+            
+       
 
     });
 }
@@ -633,14 +657,40 @@ function loadListProduct(arreglo){
 
     let productosHTML = document.getElementById("list-product")
 
-    arreglo.forEach(({urlImage,id,nombre,precio}) => {
+    arreglo.forEach(({urlImage,id,nombre,precio, oferta}) => {
+
+        if(oferta.oferta){
             
-        productosHTML.innerHTML += ` <div class="row product-layout-list">
+            productosHTML.innerHTML += ` <div class="row product-layout-list">
+                        <div class="col-lg-4 col-md-5">
+                            <div class="single-product-wrap">
+                                <div class="product-image">
+                                    <a href="product-details.html?id=${id}"><img src="${rutaImage}${urlImage}" alt="Produce Images"></a>
+                                    <span class="label">${oferta.porcentaje} Off</span>
+                                    <div class="product-action">
+                                        <a  class="add-to-cart"  onclick="addToCart(${id})"><i class="ion-bag"></i></a>
+                                        <a  class="wishlist" onclick="addToWishlist(${id})"><i class="ion-android-favorite-outline"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-7">
+                            <div class="product-content text-start">
+                                <h3><a href="product-details.html?id=${id}">${nombre}</a></h3>
+                                <div class="price-box">
+                                    <span class="old-price">${oferta.precio_old}</span>
+                                    <span class="new-price">${precio}</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis pariatur ipsa sint consectetur velit maiores sit voluptates aut tempora totam, consequatur iste quod suscipit natus. Explicabo facere neque adipisci odio.</p>
+                            </div>
+                        </div>
+                    </div>`
+        }else{
+                    productosHTML.innerHTML += ` <div class="row product-layout-list">
                     <div class="col-lg-4 col-md-5">
                         <div class="single-product-wrap">
                             <div class="product-image">
                                 <a href="product-details.html?id=${id}"><img src="${rutaImage}${urlImage}" alt="Produce Images"></a>
-                                <span class="label">30% Off</span>
                                 <div class="product-action">
                                     <a  class="add-to-cart"  onclick="addToCart(${id})"><i class="ion-bag"></i></a>
                                     <a  class="wishlist" onclick="addToWishlist(${id})"><i class="ion-android-favorite-outline"></i></a>
@@ -652,13 +702,13 @@ function loadListProduct(arreglo){
                         <div class="product-content text-start">
                             <h3><a href="product-details.html?id=${id}">${nombre}</a></h3>
                             <div class="price-box">
-                                <span class="old-price">${precio}</span>
                                 <span class="new-price">${precio}</span>
                             </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis pariatur ipsa sint consectetur velit maiores sit voluptates aut tempora totam, consequatur iste quod suscipit natus. Explicabo facere neque adipisci odio.</p>
                         </div>
                     </div>
                 </div>`
+        }
     })
 }
 
