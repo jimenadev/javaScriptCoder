@@ -68,7 +68,7 @@ const categorias = [{nombre:"Tops",
                         id_categoria:3,
                         precio:11050,
                         descripcion:"djsahfha",
-                        color:"Celeste",
+                        color:"Verde",
                         size:["S","M","L","XL"],
                         oferta:{oferta:true,precio_old:13000, porcentaje:15},
                         urlImage:"/producto6/1.webp"},
@@ -130,6 +130,8 @@ searchInput.addEventListener("keyup", buscarProductos)
 let removeFilter = document.getElementById("removeAllFilter")
 removeFilter.addEventListener("click", removeAllFilter)
 
+
+
 let filtrarPorPrecioButton = document.getElementById("filtrarPorPrecio")
 filtrarPorPrecioButton.addEventListener("click", updatePrice )
 
@@ -165,7 +167,7 @@ function removeAllFilter(){
 }
 
 function filtrarPorCategoria(idCategoria){
- 
+    filtrosProductos1.filtrarPorCategoria(idCategoria)
     loadProductos(filtrosProductos1.getListSearch())
     loadListProduct(filtrosProductos1.getListSearch())
 }
