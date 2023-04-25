@@ -503,8 +503,8 @@ const actualizarMiniCart = (cart) =>{
 
         miniCart += ` <li class="mini-cart-btns">
                             <div class="cart-btns">
-                                <a href="cart.html">Ver Carrito</a>
-                                <a href="checkout.html">Checkout</a>
+                                <a href="./pages/cart.html">Ver Carrito</a>
+                                <a href="./pages/checkout.html">Checkout</a>
                             </div>
                         </li>`
 
