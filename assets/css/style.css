@@ -211,7 +211,7 @@ a:focus {
 }
 
 .container {
-  max-width: 96vw;
+  max-width: 90vw;
 }
 
 .section {
@@ -12065,6 +12065,10 @@ ul.minicart-pricing-box li:last-child {
 }
 .product-image .product-action .wishlist:hover, .product-image .product-action .add-to-cart:hover, .product-image .product-action .quick-view:hover {
   background: #ff5151;
+  color: #ffffff;
+}
+
+.add-to-cart:hover i, .wishlist:hover i{
   color: #ffffff;
 }
 .product-image span.label {
