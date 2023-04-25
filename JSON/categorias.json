@@ -1,1 +1,5 @@
-{"id":1,"items":[{"id":2,"producto":"Grunge Punk Camisetas de Mujer A rayas Casual","cantidad":1,"precioUnitario":13650,"total":13650,"urlImage":"/producto2/1.webp"},{"id":3,"producto":"Pantalones ajustados PU de cintura alta","cantidad":3,"precioUnitario":13600,"total":40800,"urlImage":"/producto3/1.webp"},{"id":6,"producto":"Vestido con estampado de leopardo de manga obispo de muslo con abertura","cantidad":1,"precioUnitario":11050,"total":11050,"urlImage":"/producto6/1.webp"}],"sumaPreciosProductos":65500,"totalProductos":5}
+[{"nombre":"Tops","id":1},
+{"nombre":"Bottoms","id":2},
+{"nombre":"Vestidos","id":3},
+{"nombre":"Pijamas","id":4},
+{"nombre":"Deporte","id":5}]

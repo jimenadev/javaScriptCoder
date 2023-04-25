@@ -1,23 +1,3 @@
-let rutaImage = "./imagenes"
-
-/*************Eventos************************* */
-window.addEventListener("load", cargarPagHome)
-
-
-function cargarPagHome(e){
-
-    fetch('./../JSON/productos.json')
-        .then(response => response.json())
-        .then(response => {
-            productos = response
-            filtrosProductos1 = filtrosProductos()
-            filtrosProductos1.add(productos)
-            loadCart()
-        });  
-}
-
-
-/******************Renderizar Mini-Cart******************************* */
 const actualizarMiniCart = (cart) =>{
 
     setCartLocalStorage(cart)
@@ -46,15 +26,11 @@ const actualizarMiniCart = (cart) =>{
 
         miniCart += ` <li class="mini-cart-btns">
                             <div class="cart-btns">
-                                <a href="./pages/cart.html">Ver Carrito</a>
-                                <a href="./pages/checkout.html">Checkout</a>
+                                <a href="cart.html">Ver Carrito</a>
+                                <a href="checkout.html">Checkout</a>
                             </div>
                         </li>`
 
         miniCartHTML.innerHTML = miniCart
-        cartTotalHTML.innerHTML = cart1.getTotalCantidad();
-   
-
+        cartTotalHTML.innerHTML = cart1.getTotalCantidad()
 }
-
-

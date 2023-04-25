@@ -84,7 +84,7 @@ function cart(init) {
   }
 
 
-  function filtrosProductos() {
+function filtrosProductos() {
     return {
         items: [],
         itemsSearch:[],
