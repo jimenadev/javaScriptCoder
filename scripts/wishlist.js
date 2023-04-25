@@ -1,98 +1,8 @@
 
-const productos = [{id:1,
-    nombre:"Blusa con botón con bolsillo delantero de manga enrollada con botón",
-    id_categoria:1,
-    precio:20000,
-    descripcion:"djsahfha",
-    color:["Amarillo"],
-    size:["S","M","L"],
-    Oferta:"",
-    urlImage:"/producto1/1.webp"},
-    {id:2,
-    nombre:"Grunge Punk Camisetas de Mujer A rayas Casual",
-    id_categoria:1,
-    precio:15000,
-    descripcion:"djsahfha",
-    color:["Rojo"],
-    size:["S","M","L"],
-    Oferta:"",
-    urlImage:"/producto2/1.webp"},
-    {id:3,
-    nombre:"Pantalones ajustados PU de cintura alta",
-    id_categoria:2,
-    precio:17000,
-    descripcion:"djsahfha",
-    color:["Gris"],
-    size:["S","M","L"],
-    Oferta:"",
-    urlImage:"/producto3/1.webp"},
-    {id:4,
-    nombre:"Falda floral de muslo con abertura",
-    id_categoria:2,
-    precio:7000,
-    descripcion:"djsahfha",
-    color:["Negro"],
-    size:["S","M","L"],
-    Oferta:"",
-    urlImage:"/producto4/4.webp"},
-    {id:5,
-    nombre:"Vestido Plantas Bohemio",
-    id_categoria:3,
-    precio:9900,
-    descripcion:"djsahfha",
-    color:["Beige"],
-    size:["S","M"],
-    Oferta:"",
-    urlImage:"/producto5/1.webp"},
-    {id:6,
-    nombre:"Vestido con estampado de leopardo de manga obispo de muslo con abertura",
-    id_categoria:3,
-    precio:15290,
-    descripcion:"djsahfha",
-    color:"Verde",
-    size:["S","M","L","XL"],
-    Oferta:"",
-    urlImage:"/producto6/1.webp"},
-    {id:7,
-    nombre:"Conjunto de pijama pantalones con blusa con estampado floral ribete en contraste de satén",
-    id_categoria:4,
-    precio:21000,
-    descripcion:"djsahfha",
-    color:["Celeste"],
-    size:["S","M","L","XL"],
-    Oferta:"",
-    urlImage:"/producto7/1.webp"},
-    {id:8,
-    nombre:"Pijama con estampado floral ribete en contraste Pantalones con blusa Conjunto de pijama",
-    id_categoria:4,
-    precio:18690,
-    descripcion:"djsahfha",
-    color:["Verde"],
-    size:["S","M","L","XL"],
-    Oferta:"",
-    urlImage:"/producto8/1.webp"},
-    {id:9,
-    nombre:"Leggings deportivos bolsillo de celular de cintura ancha",
-    id_categoria:5,
-    precio:13290,
-    descripcion:"djsahfha",
-    color:["Negro"],
-    size:["M","L","XL"],
-    Oferta:"",
-    urlImage:"/producto9/1.webp"},
-    {id:10,
-    nombre:"Leggings deportivos de tie dye con estiramiento alto",
-    id_categoria:5,
-    precio:9890,
-    descripcion:"djsahfha",
-    color:["Rosado"],
-    size:["S","L","XL"],
-    Oferta:"",
-    urlImage:"/producto10/1.webp"}
-];
+let productos 
 
 let rutaImage = "./../imagenes"
-let initCart = false
+
 let cart1 =[]
 let wishlist1=[]
 
@@ -109,9 +19,19 @@ window.addEventListener("load", cargarPagWishlist)
 /*************Métodos Cart************************* */
 
 function cargarPagWishlist(e){
-    loadCart()
-    loadWishlist()
-    loadTableWishlist(wishlist1)
+
+    fetch('./../JSON/productos.json')
+        .then(response => response.json())
+        .then(response => {
+            productos = response
+            filtrosProductos1 = filtrosProductos()
+            filtrosProductos1.add(productos)
+            loadCart()
+            loadWishlist()
+            loadTableWishlist(wishlist1)
+        });
+    
+   
    
 }
 
@@ -167,6 +87,11 @@ function addToCart(id_producto, cantidad=1){
 
 }
 
+const eliminar = (id) =>{
+    cart1.remove(id)
+    actualizarMiniCart(cart1)
+}
+
 
 const incrementar = (id,cantidad=1)=>{
     cart1.incrementarProduct(id, cantidad)
@@ -213,122 +138,6 @@ const eliminarWishlist = (id) =>{
     wishlist1.remove(id)
     loadTableWishlist(wishlist1)
 }
-
-/*************Objetos Cart y Wishlist************************* */
-
-function cart(init) {
-    return {
-        id:init,
-        items: [],
-        sumaPreciosProductos:null,
-        totalProductos:null,
-        search: function(id){
-            let item = this.items.find((item) => item.id===id)
-            return (item) ? true: false
-        },
-        add: function(item) {
-          this.items.push(item);
-          this.sumPrecio();
-          this.totalProduct();
-        },
-        remove: function(id) {
-            let item = this.items.find((item) => item.id===id)
-            if (this.items.includes(item)) {
-                let index = this.items.indexOf(item)
-                if (index > -1) {
-                  this.items.splice(index, 1)
-                }
-                this.sumPrecio();
-                this.totalProduct();
-            }
-
-            
-        },
-        incrementarProduct:function(id, cantidad){
-            let item = this.items.find((item) => item.id===id)
-            
-            let index = this.items.indexOf(item)
-              if (index > -1) {
-                    item.cantidad += cantidad
-                    item.total = item.precioUnitario * item.cantidad
-                    this.items[index] = item
-                    this.sumPrecio();
-                    this.totalProduct();
-              }
-        },
-        decrementarProduct:function(id, cantidad){
-            let item = this.items.find((item) => item.id===id)
-            
-            let index = this.items.indexOf(item)
-              if (index > -1) {
-                    item.cantidad -= cantidad
-                    item.total = item.precioUnitario * item.cantidad
-                    this.items[index] = item
-                    this.sumPrecio();
-                    this.totalProduct();
-              }
-        },
-        updateCantidadProduct: function(id, cantidad){
-            let item = this.items.find((item) => item.id===id)
-            let index = this.items.indexOf(item)
-            if (index > -1) {
-                item.cantidad = cantidad
-                item.total = item.precioUnitario * item.cantidad
-                this.items[index] = item
-                this.sumPrecio();
-                this.totalProduct();
-            }
-        },
-        getList: function() {
-            return this.items
-        },
-        sumPrecio:function(){
-            this.sumaPreciosProductos = this.items.reduce( (acumulador, elemento) => acumulador + parseInt(elemento.total),0)
-        },
-        totalProduct:function(){
-            this.totalProductos = this.items.reduce( (acumulador, elemento) => acumulador + parseInt(elemento.cantidad) , 0)
-        },
-        getTotalPrecio: function() {
-            return this.sumaPreciosProductos
-        },
-        getTotalCantidad: function() {
-            return this.totalProductos
-        },
-      
-    }
-  
-  }
-
-
-
-function wishlist(init) {
-    return {
-        id:init,
-        items: [],
-        search: function(id){
-            let item = this.items.find((item) => item.id===id)
-            return (item) ? true: false
-        },
-        add: function(item) {
-          this.items.push(item);
-        },
-        remove: function(id) {
-            let item = this.items.find((item) => item.id===id)
-            if (this.items.includes(item)) {
-                let index = this.items.indexOf(item)
-                if (index > -1) {
-                  this.items.splice(index, 1)
-                }
-            }
-        },
-        getList: function() {
-            return this.items
-        },
-    }
-  
-  }
-
-
 
 
   /*************Renderizar wishlist***********/

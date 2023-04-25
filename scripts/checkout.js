@@ -5,13 +5,9 @@ let cart1 =[];
 let filtrosProductos1;
 
 
-
 /*************Eventos Productos************************* */
 
-
 window.addEventListener("load", cargarPagCheckout)
-
-
 
 
 /*************Métodos Cart************************* */
@@ -37,10 +33,6 @@ const getCartLocalStorage = () =>{
 
 
 
-
-
-/***************Metodos Cart*********************************** */
-
 const loadCart = ()=>{
     let cartLS = getCartLocalStorage()
     let itemsLS = cartLS[0]["items"]
@@ -59,93 +51,13 @@ const loadCart = ()=>{
     }
 }
 
-/*************Objetos Cart y Productos************************* */
-
-function cart(init) {
-    return {
-        id:init,
-        items: [],
-        sumaPreciosProductos:null,
-        totalProductos:null,
-        search: function(id){
-            let item = this.items.find((item) => item.id===id)
-            return (item) ? true: false
-        },
-        add: function(item) {
-          this.items.push(item);
-          this.sumPrecio();
-          this.totalProduct();
-        },
-        remove: function(id) {
-            let item = this.items.find((item) => item.id===id)
-            if (this.items.includes(item)) {
-                let index = this.items.indexOf(item)
-                if (index > -1) {
-                  this.items.splice(index, 1)
-                }
-                this.sumPrecio();
-                this.totalProduct();
-            }
-
-            
-        },
-        incrementarProduct:function(id, cantidad){
-            let item = this.items.find((item) => item.id===id)
-            
-            let index = this.items.indexOf(item)
-              if (index > -1) {
-                    item.cantidad += cantidad
-                    item.total = item.precioUnitario * item.cantidad
-                    this.items[index] = item
-                    this.sumPrecio();
-                    this.totalProduct();
-              }
-        },
-        decrementarProduct:function(id, cantidad){
-            let item = this.items.find((item) => item.id===id)
-            
-            let index = this.items.indexOf(item)
-              if (index > -1) {
-                    item.cantidad -= cantidad
-                    item.total = item.precioUnitario * item.cantidad
-                    this.items[index] = item
-                    this.sumPrecio();
-                    this.totalProduct();
-              }
-        },
-        updateCantidadProduct: function(id, cantidad){
-            let item = this.items.find((item) => item.id===id)
-            let index = this.items.indexOf(item)
-            if (index > -1) {
-                item.cantidad = cantidad
-                item.total = item.precioUnitario * item.cantidad
-                this.items[index] = item
-                this.sumPrecio();
-                this.totalProduct();
-            }
-        },
-        getList: function() {
-            return this.items
-        },
-        sumPrecio:function(){
-            this.sumaPreciosProductos = this.items.reduce( (acumulador, elemento) => acumulador + parseInt(elemento.total),0)
-        },
-        totalProduct:function(){
-            this.totalProductos = this.items.reduce( (acumulador, elemento) => acumulador + parseInt(elemento.cantidad) , 0)
-        },
-        getTotalPrecio: function() {
-            return this.sumaPreciosProductos
-        },
-        getTotalCantidad: function() {
-            return this.totalProductos
-        },
-      
-    }
-  
-  }
+const eliminar = (id) =>{
+    cart1.remove(id)
+    actualizarMiniCart(cart1)
+}
 
 
-  /*************Renderizar Productos***********/
+/*************Renderizar Productos***********/
 function loadTableCheckout(cart){
 
     document.getElementById("list-checkout").innerHTML = ""
@@ -214,8 +126,5 @@ const actualizarMiniCart = (cart) =>{
 
         miniCartHTML.innerHTML = miniCart
         cartTotalHTML.innerHTML = cart1.getTotalCantidad();
-   
 
 }
-
-

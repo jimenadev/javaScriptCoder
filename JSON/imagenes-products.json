@@ -1,0 +1,42 @@
+[
+    {
+        "id":1,
+        "imagenes":["/producto1/1.webp","/producto1/2.webp","/producto1/3.webp", "/producto1/4.webp", "/producto1/5.webp"]
+    },
+    {
+        "id":2,
+        "imagenes":["/producto2/1.webp","/producto2/2.webp","/producto2/3.webp", "/producto2/4.webp", "/producto2/5.webp"]
+    },
+    {
+        "id":3,
+        "imagenes":["/producto3/1.webp","/producto3/2.webp","/producto3/3.webp", "/producto3/4.webp", "/producto3/5.webp"]
+    },
+    {
+        "id":4,
+        "imagenes":["/producto4/1.webp","/producto4/2.webp","/producto4/3.webp", "/producto4/4.webp", "/producto4/5.webp"]
+    },
+    {
+        "id":5,
+        "imagenes":["/producto5/1.webp","/producto5/2.webp","/producto5/3.webp", "/producto5/4.webp", "/producto5/5.webp"]
+    },
+    {
+        "id":6,
+        "imagenes":["/producto6/1.webp","/producto6/2.webp","/producto6/3.webp", "/producto6/4.webp", "/producto6/5.webp"]
+    },
+    {
+        "id":7,
+        "imagenes":["/producto7/1.webp","/producto7/2.webp","/producto7/3.webp", "/producto7/4.webp", "/producto7/5.webp"]
+    },
+    {
+        "id":8,
+        "imagenes":["/producto8/1.webp","/producto8/2.webp","/producto8/3.webp", "/producto8/4.webp", "/producto8/5.webp"]
+    },
+    {
+        "id":9,
+        "imagenes":["/producto9/1.webp","/producto9/2.webp","/producto9/3.webp", "/producto9/4.webp", "/producto9/5.webp"]
+    },
+    {
+        "id":10,
+        "imagenes":["/producto10/1.webp","/producto10/2.webp","/producto10/3.webp", "/producto10/4.webp", "/producto10/5.webp"]
+    }
+]

@@ -1,155 +1,9 @@
 /*************Variables************************* */
-
-
-const color = ["Negro","Blanco","Rojo", "Verde", "Amarillo", "Azul", "Naranjo", "Beige", "Cafe", "Morado", "Gris", "Rosado", "Celeste"]
-const size = ["S", "M", "L", "XL", "XXL"]
-
-const categorias = [{nombre:"Tops",
-                    id:1},
-                    {nombre:"Bottoms",
-                    id:2},
-                    {nombre:"Vestidos",
-                    id:3},
-                    {nombre:"Pijamas",
-                    id:4},
-                    {nombre:"Deporte",
-                    id:5},
-                    ];
-
-                    const productos = [{id:1,
-                        nombre:"Blusa con botón con bolsillo delantero de manga enrollada con botón",
-                        id_categoria:1,
-                        precio:20000,
-                        descripcion:"djsahfha",
-                        color:["Amarillo"],
-                        size:["S","M","L"],
-                        Oferta:"",
-                        urlImage:"/producto1/1.webp"},
-                        {id:2,
-                        nombre:"Grunge Punk Camisetas de Mujer A rayas Casual",
-                        id_categoria:1,
-                        precio:15000,
-                        descripcion:"djsahfha",
-                        color:["Rojo"],
-                        size:["S","M","L"],
-                        Oferta:"",
-                        urlImage:"/producto2/1.webp"},
-                        {id:3,
-                        nombre:"Pantalones ajustados PU de cintura alta",
-                        id_categoria:2,
-                        precio:17000,
-                        descripcion:"djsahfha",
-                        color:["Gris"],
-                        size:["S","M","L"],
-                        Oferta:"",
-                        urlImage:"/producto3/1.webp"},
-                        {id:4,
-                        nombre:"Falda floral de muslo con abertura",
-                        id_categoria:2,
-                        precio:7000,
-                        descripcion:"djsahfha",
-                        color:["Negro"],
-                        size:["S","M","L"],
-                        Oferta:"",
-                        urlImage:"/producto4/4.webp"},
-                        {id:5,
-                        nombre:"Vestido Plantas Bohemio",
-                        id_categoria:3,
-                        precio:9900,
-                        descripcion:"djsahfha",
-                        color:["Beige"],
-                        size:["S","M"],
-                        Oferta:"",
-                        urlImage:"/producto5/1.webp"},
-                        {id:6,
-                        nombre:"Vestido con estampado de leopardo de manga obispo de muslo con abertura",
-                        id_categoria:3,
-                        precio:15290,
-                        descripcion:"djsahfha",
-                        color:"Verde",
-                        size:["S","M","L","XL"],
-                        Oferta:"",
-                        urlImage:"/producto6/1.webp"},
-                        {id:7,
-                        nombre:"Conjunto de pijama pantalones con blusa con estampado floral ribete en contraste de satén",
-                        id_categoria:4,
-                        precio:21000,
-                        descripcion:"djsahfha",
-                        color:["Celeste"],
-                        size:["S","M","L","XL"],
-                        Oferta:"",
-                        urlImage:"/producto7/1.webp"},
-                        {id:8,
-                        nombre:"Pijama con estampado floral ribete en contraste Pantalones con blusa Conjunto de pijama",
-                        id_categoria:4,
-                        precio:18690,
-                        descripcion:"djsahfha",
-                        color:["Verde"],
-                        size:["S","M","L","XL"],
-                        Oferta:"",
-                        urlImage:"/producto8/1.webp"},
-                        {id:9,
-                        nombre:"Leggings deportivos bolsillo de celular de cintura ancha",
-                        id_categoria:5,
-                        precio:13290,
-                        descripcion:"djsahfha",
-                        color:["Negro"],
-                        size:["M","L","XL"],
-                        Oferta:"",
-                        urlImage:"/producto9/1.webp"},
-                        {id:10,
-                        nombre:"Leggings deportivos de tie dye con estiramiento alto",
-                        id_categoria:5,
-                        precio:9890,
-                        descripcion:"djsahfha",
-                        color:["Rosado"],
-                        size:["S","L","XL"],
-                        Oferta:"",
-                        urlImage:"/producto10/1.webp"}
-                    ];
-const imagenesProduct = [
-    {
-        id:1,
-        imagenes:["/producto1/1.webp","/producto1/2.webp","/producto1/3.webp", "/producto1/4.webp", "/producto1/5.webp"]
-    },
-    {
-        id:2,
-        imagenes:["/producto2/1.webp","/producto2/2.webp","/producto2/3.webp", "/producto2/4.webp", "/producto2/5.webp"]
-    },
-    {
-        id:3,
-        imagenes:["/producto3/1.webp","/producto3/2.webp","/producto3/3.webp", "/producto3/4.webp", "/producto3/5.webp"]
-    },
-    {
-        id:4,
-        imagenes:["/producto4/1.webp","/producto4/2.webp","/producto4/3.webp", "/producto4/4.webp", "/producto4/5.webp"]
-    },
-    {
-        id:5,
-        imagenes:["/producto5/1.webp","/producto5/2.webp","/producto5/3.webp", "/producto5/4.webp", "/producto5/5.webp"]
-    },
-    {
-        id:6,
-        imagenes:["/producto6/1.webp","/producto6/2.webp","/producto6/3.webp", "/producto6/4.webp", "/producto6/5.webp"]
-    },
-    {
-        id:7,
-        imagenes:["/producto7/1.webp","/producto7/2.webp","/producto7/3.webp", "/producto7/4.webp", "/producto7/5.webp"]
-    },
-    {
-        id:8,
-        imagenes:["/producto8/1.webp","/producto8/2.webp","/producto8/3.webp", "/producto8/4.webp", "/producto8/5.webp"]
-    },
-    {
-        id:9,
-        imagenes:["/producto9/1.webp","/producto9/2.webp","/producto9/3.webp", "/producto9/4.webp", "/producto9/5.webp"]
-    },
-    {
-        id:10,
-        imagenes:["/producto10/1.webp","/producto10/2.webp","/producto10/3.webp", "/producto10/4.webp", "/producto10/5.webp"]
-    },
-    
-]
+let color 
+let size
+let categorias
+let productos 
+let imagenesProduct 
                 
 
 
@@ -159,7 +13,7 @@ let cart1;
 let filtrosProductos1;
 let wishlist1;
 let idProducto
-let rutaImage = "./imagenes"
+let rutaImage = "./../imagenes"
 
 
 
@@ -179,14 +33,29 @@ wish.addEventListener("click",addWishlist )
 /*************Métodos details product************************* */
 
 function cargarPagProductDetails(e){
-    filtrosProductos1 = filtrosProductos()
-    filtrosProductos1.add(productos)
-    loadCart()
-    loadWishlist()
-    idProducto = getProducto()
-    filtrosProductos1.searchId(idProducto)
-    console.log(filtrosProductos1.getListSearch())
-    loadProductDetails(filtrosProductos1.getListSearch())
+
+    fetch('./../JSON/imagenes-products.json')
+        .then(response => response.json())
+        .then(response => {
+            imagenesProduct = response
+        });  
+
+    fetch('./../JSON/productos.json')
+        .then(response => response.json())
+        .then(response => {
+            productos = response
+            filtrosProductos1 = filtrosProductos()
+            filtrosProductos1.add(productos)
+        
+            idProducto = getProducto()
+            filtrosProductos1.searchId(idProducto)
+            console.log(filtrosProductos1.getListSearch())
+            loadProductDetails(filtrosProductos1.getListSearch())
+            loadCart()
+            loadWishlist()
+        });  
+
+   
    
 }
 
@@ -338,232 +207,6 @@ const getWishlistLocalStorage = () =>{
 }
 
 
-
-
-/*************Objetos Cart y Wishlist************************* */
-
-function cart(init) {
-    return {
-        id:init,
-        items: [],
-        sumaPreciosProductos:null,
-        totalProductos:null,
-        search: function(id){
-            let item = this.items.find((item) => item.id===id)
-            return (item) ? true: false
-        },
-        add: function(item) {
-          this.items.push(item);
-          this.sumPrecio();
-          this.totalProduct();
-        },
-        remove: function(id) {
-            let item = this.items.find((item) => item.id===id)
-        
-            if (this.items.includes(item)) {
-                let index = this.items.indexOf(item)
-                if (index > -1) {
-                  this.items.splice(index, 1)
-                }
-                this.sumPrecio();
-                this.totalProduct();
-            }
-
-            
-        },
-        incrementarProduct:function(id, cantidad){
-            let item = this.items.find((item) => item.id===id)
-            console.log(item)
-            
-            let index = this.items.indexOf(item)
-              if (index > -1) {
-                    item.cantidad += cantidad
-                    item.total = item.precioUnitario * item.cantidad
-                    this.items[index] = item
-                    this.sumPrecio();
-                    this.totalProduct();
-              }
-        },
-        decrementarProduct:function(id, cantidad){
-            let item = this.items.find((item) => item.id===id)
-            
-            let index = this.items.indexOf(item)
-              if (index > -1) {
-                    item.cantidad -= cantidad
-                    item.total = item.precioUnitario * item.cantidad
-                    this.items[index] = item
-                    this.sumPrecio();
-                    this.totalProduct();
-              }
-        },
-        updateCantidadProduct: function(id, cantidad){
-            let item = this.items.find((item) => item.id===id)
-            let index = this.items.indexOf(item)
-            if (index > -1) {
-                item.cantidad = cantidad
-                item.total = item.precioUnitario * item.cantidad
-                this.items[index] = item
-                this.sumPrecio();
-                this.totalProduct();
-            }
-        },
-        getList: function() {
-            return this.items
-        },
-        sumPrecio:function(){
-            this.sumaPreciosProductos = this.items.reduce( (acumulador, elemento) => acumulador + parseInt(elemento.total),0)
-        },
-        totalProduct:function(){
-            this.totalProductos = this.items.reduce( (acumulador, elemento) => acumulador + parseInt(elemento.cantidad) , 0)
-        },
-        getTotalPrecio: function() {
-            return this.sumaPreciosProductos
-        },
-        getTotalCantidad: function() {
-            return this.totalProductos
-        },
-      
-    }
-  
-  }
-
-  function filtrosProductos() {
-    return {
-        items: [],
-        itemsSearch:[],
-        orderPrecio:0,
-        orderNombre:0,
-        add: function(productos){
-            this.items=productos
-        },
-        search: function(nombre){
-            this.orderPrecio=0
-            this.orderNombre=0
-            nombre = nombre.toLowerCase()
-            let newProducts =this.items.filter(element => {
-
-                let nombreProduct = element.nombre.toLowerCase()
-                let isIncludes = nombreProduct.includes(nombre)
-
-                if(isIncludes){
-                    return element
-                }
-                
-            });
-
-            this.itemsSearch = newProducts
-        },
-        searchId: function(id){
-            let newProducts = this.items.filter((item) => item.id==id)
-            this.itemsSearch = newProducts
-        },
-        getList: function() {
-            return this.items
-        },
-        getListSearch: function() {
-            return this.itemsSearch
-        },
-        filtrarPorCategoria(idCategoria){
-            this.orderPrecio=0
-            this.orderNombre=0
-            let newProducts =this.items.filter(element => {
-
-                if(element.id_categoria==idCategoria){
-                    return element
-                }
-                
-            });
-
-            this.itemsSearch = newProducts
-        },
-        filtrarPorColor: function(color){
-            this.orderPrecio=0
-            this.orderNombre=0
-            let newProducts =this.items.filter(element => {
-
-                let isIncludesSize = element.color.includes(color)
-
-                if(isIncludesSize){
-                    return element
-                }
-                
-            });
-
-            this.itemsSearch = newProducts
-
-        },
-        filtrarPorSize: function(size){
-            this.orderPrecio=0
-            this.orderNombre=0
-            let newProducts =this.items.filter(element => {
-
-                let isIncludesSize = element.size.includes(size)
-
-                if(isIncludesSize){
-                    return element
-                }
-                
-            });
-
-            this.itemsSearch = newProducts
-        },
-        filtrarPorPrecio: function(minPrecio, maxPrecio){
-            this.orderPrecio=0
-            this.orderNombre=0
-
-            let newProducts =this.items.filter(element => {
-
-                if(element.precio >= minPrecio && element.precio <= maxPrecio ){
-                    return element
-                }
-                
-            });
-
-            this.itemsSearch = newProducts
-
-        },
-        sortPrice: function(order){
-            this.itemsSearch = [...this.items]
-            this.itemsSearch.sort((x, y) => x.precio - y.precio)  
-            if(this.orderPrecio != 0){
-                if(order>this.orderPrecio){
-                    this.itemsSearch.reverse()
-                }else if(order<this.orderPrecio){
-                    this.itemsSearch.sort((x, y) => x.precio - y.precio)    
-                }
-            }else{
-                if(order==2){
-                    this.itemsSearch.reverse()
-                }
-            }
-
-            this.orderPrecio=order
-        },
-        sortNombre: function(order){
-            this.itemsSearch = [...this.items]
-            this.itemsSearch.sort((x, y) => x.nombre.localeCompare(y.nombre)); 
-            if(this.orderNombre != 0){
-                if(order>this.orderNombre){
-                    this.itemsSearch.reverse()
-                }else if(order<this.orderNombre){
-                    this.itemsSearch.sort((x, y) => x.nombre.localeCompare(y.nombre)); 
-                }
-            }else{
-                if(order==2){
-                    this.itemsSearch.reverse()
-                }
-            }
-            this.orderNombre=order
-        },
-      
-    }
-
-  }
-
-
-
-
-
 function wishlist(init) {
     return {
         id:init,
@@ -647,7 +290,7 @@ const actualizarMiniCart = (cart) =>{
       
         miniCart += `<li class="cart-item">
                                     <div class="cart-image">
-                                        <a href="single-product.html"><img alt="" src="${element.urlImage}"></a>
+                                        <a href="single-product.html"><img alt="" src="${rutaImage}${element.urlImage}"></a>
                                     </div>
                                     <div class="cart-title">
                                         <a href="product-details.html">
