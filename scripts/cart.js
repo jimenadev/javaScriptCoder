@@ -3,7 +3,7 @@
 let initCart = false
 let cart1 =[];
 let filtrosProductos1;
-let rutaImage = "./imagenes"
+let rutaImage = "./../imagenes"
 
 
 

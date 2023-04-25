@@ -110,7 +110,7 @@ const categorias = [{nombre:"Tops",
                         urlImage:"/producto10/1.webp"}
                     ];
 
-let rutaImage = "./imagenes"
+let rutaImage = "./../imagenes"
 let initCart = false
 let initWishlist=false
 let cart1;
@@ -303,11 +303,9 @@ const getCartLocalStorage = () =>{
 
 const loadWishlist = ()=>{
     let wishlistLS = getWishlistLocalStorage()
-    console.log(wishlistLS)
-    if(wishlistLS[0] !== null){
+
+    if(wishlistLS[0].length > 0){
         let itemsLS = wishlistLS[0]["items"]
-        console.log(itemsLS.length)
-    
         if(itemsLS.length>0){
             wishlist1 = wishlist(1)
             initWishlist=true
@@ -332,11 +330,7 @@ const addToWishlist = (id_producto) =>{
         wishlist1.add({id:id_producto,producto:prodSelec.nombre,precioUnitario: prodSelec.precio, urlImage:prodSelec.urlImage})
         setWishlistLocalStorage(wishlist1)
     }
-
-    
-
 }
-
 
 const setWishlistLocalStorage = (wishlist) =>{
     let wishlistJSON = JSON.stringify(wishlist)

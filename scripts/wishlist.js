@@ -91,7 +91,7 @@ const productos = [{id:1,
     urlImage:"/producto10/1.webp"}
 ];
 
-let rutaImage = "./imagenes"
+let rutaImage = "./../imagenes"
 let initCart = false
 let cart1 =[]
 let wishlist1=[]

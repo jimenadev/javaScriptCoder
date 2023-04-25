@@ -1,5 +1,5 @@
 
-
+let rutaImage = "./../imagenes"
 let initCart = false
 let cart1 =[];
 let filtrosProductos1;
@@ -191,7 +191,7 @@ const actualizarMiniCart = (cart) =>{
       
         miniCart += `<li class="cart-item">
                                     <div class="cart-image">
-                                        <a href="single-product.html"><img alt="" src="${element.urlImage}"></a>
+                                        <a href="single-product.html"><img alt="" src="${rutaImage}${element.urlImage}"></a>
                                     </div>
                                     <div class="cart-title">
                                         <a href="product-details.html">

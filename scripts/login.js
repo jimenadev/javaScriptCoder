@@ -110,7 +110,7 @@ const categorias = [{nombre:"Tops",
                         urlImage:"/producto10/1.webp"}
                     ];
 
-let rutaImage = "./imagenes"
+let rutaImage = "./../imagenes"
 let initCart = false
 let initWishlist=false
 let cart1;
