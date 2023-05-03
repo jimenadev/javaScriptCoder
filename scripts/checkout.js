@@ -5,10 +5,23 @@ let rutaImage = "./../imagenes"
 
 window.addEventListener("load", cargarPagCheckout)
 
+
+let realizarPedido = document.getElementById("realizarPedido")
+realizarPedido.addEventListener("click", checkout)
+
 function cargarPagCheckout(e){
     loadCart()
     loadTableCheckout(cart1)
     loadCartTotalCheckout(cart1)
+}
+
+function checkout(e){
+    vaciarCarrito()
+    Swal.fire({
+        template: '#my-template'
+      })
+    
+
 }
 
 /*************Renderizar Checkout***********/

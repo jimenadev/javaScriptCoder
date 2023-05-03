@@ -177,6 +177,11 @@ function  updateQuantity(id){
 
 }
 
+function vaciarCarrito(){
+    cart1.vaciarCarrito()
+    actualizarMiniCart(cart1);
+}
+
 
 /***************Metodos Wishlist*********************************** */
 const loadWishlist = ()=>{

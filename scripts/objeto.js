@@ -78,6 +78,15 @@ function cart(init) {
         getTotalCantidad: function() {
             return this.totalProductos
         },
+        vaciarCarrito: function(){
+            console.log("antes")
+            console.log(this.items)
+            this.items=[]
+            console.log("despues")
+            console.log(this.items)
+            this.sumPrecio();
+            this.totalProduct();
+        }
       
     }
   
